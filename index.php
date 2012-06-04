@@ -93,40 +93,42 @@
 			<!-- contenu dynamique -->
 			<?php
 				// messages spéciaux
-				switch ($_GET['smsg']) {
-					case 'timeout':
-					$c = Config::instance();
-					$exp = $c->get("sess_exp");
-					$msg = "votre session a expiré après $exp secondes d'inactivité...";
-					break;
-					
-					case 'invalid_signup':
-					$msg = "il y a des champs invalides dans votre formulaire d'inscription...";
-					break;
-					
-					case 'invalid_modify_user':
-					$msg = "il y a des champs invalides dans votre formulaire de modification...";
-					break;
-					
-					case 'invalid_login':
-					$msg = "mauvais nom d'utilisateur ou mot de passe...";
-					break;
-					
-					case 'invalid_add_debt':
-					$msg = "il y a des champs invalides dans votre formulaire d'ajout de dette...";
-					break;
-					
-					case 'inactive_user':
-					$msg = "votre utilisateur n'est pas actif; veuillez consulter un administrateur...";
-					break;
-					
-					case 'invalid_avatar':
-					$msg = "avatar incompatible ou trop grand...";
-					break;
-					
-					case 'invalid_password':
-					$msg = "nouveau mot de passe non valide...";
-					break;
+				if (isset($_GET['smsg'])) {
+					switch ($_GET['smsg']) {
+						case 'timeout':
+						$c = Config::instance();
+						$exp = $c->get("sess_exp");
+						$msg = "votre session a expiré après $exp secondes d'inactivité...";
+						break;
+						
+						case 'invalid_signup':
+						$msg = "il y a des champs invalides dans votre formulaire d'inscription...";
+						break;
+						
+						case 'invalid_modify_user':
+						$msg = "il y a des champs invalides dans votre formulaire de modification...";
+						break;
+						
+						case 'invalid_login':
+						$msg = "mauvais nom d'utilisateur ou mot de passe...";
+						break;
+						
+						case 'invalid_add_debt':
+						$msg = "il y a des champs invalides dans votre formulaire d'ajout de dette...";
+						break;
+						
+						case 'inactive_user':
+						$msg = "votre utilisateur n'est pas actif; veuillez consulter un administrateur...";
+						break;
+						
+						case 'invalid_avatar':
+						$msg = "avatar incompatible ou trop grand...";
+						break;
+						
+						case 'invalid_password':
+						$msg = "nouveau mot de passe non valide...";
+						break;
+					}
 				}
 				if (isset($msg)) {
 					$msg = hs($msg); ?>

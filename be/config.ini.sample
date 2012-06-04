@@ -1,0 +1,10 @@
+; Configuration principale du back-end de cococo
+
+[mysql_connection]
+db_server = "localhost"
+db_user = "root"
+db_passwd = ""
+db_db = "cococo"
+
+[sessions]
+sess_exp = 600

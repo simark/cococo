@@ -21,6 +21,10 @@ if (!$g_be_session->is_user_logged()) { ?>
 			vous rappeler qui vous doit combien depuis quand, et vice versa, combien vous devez à qui depuis
 			quand. Commencez dès maintenant en quelques étapes&nbsp;:
 			</p>
+			<p>
+			<strong>cococo</strong> is debt management system that helps you track who owes you some money and vice-versa.
+			Start tracking your debts in only 3 easy steps:&nbsp;:
+			</p>
 		</div>
 	</div>
 	<div class="struct struct-ban-blue-top"></div>
@@ -34,7 +38,7 @@ if (!$g_be_session->is_user_logged()) { ?>
 <?php } else { ?>
 	<div class="struct struct-body">
 		<div class="struct-inner-content">
-			<h2 class="first">mon cococo</h2>
+			<h2 class="first"><?php echo _T('my-cococo'); ?></h2>
 		</div>
 </div>
 	<?php
@@ -102,7 +106,9 @@ if (!$g_be_session->is_user_logged()) { ?>
 	<div class="struct struct-body">
 		<div class="struct-inner-content">
 			<div id="select-tab-box">
-				<button class="button" id="sel-tab-total">totaux</button><button class="button" id="sel-tab-summary">sommaire</button><button class="button" id="sel-tab-history">historique</button>
+				<button class="button" id="sel-tab-total"><?php echo _T('totals'); ?></button>
+				<button class="button" id="sel-tab-summary"><?php echo _T('summary'); ?></button>
+				<button class="button" id="sel-tab-history"><?php echo _T('history'); ?></button>
 			</div>
 		</div>
 	</div>

@@ -9,10 +9,9 @@
 ?>
 <div class="struct struct-body">
 	<div class="struct-inner-content">
-		<h2 class="first">ajouter une dette</h2>
+		<h2 class="first"><?php echo _T('add-debt'); ?></h2>
 		<p>
-		Ce formulaire vous permet d'ajouter une dette. À la suite de la soumission, l'autre utilisateur
-		devra confirmer la dette ajoutée afin que celle-ci soit officialisée dans le système.
+		<?php echo _T('add-debt-desc'); ?>
 		</p>
 	</div>
 </div>
@@ -20,7 +19,7 @@
 <div class="struct struct-ban-blue-body">
 	<div class="struct-ban-blue-inner-content" id="important-thing">
 		<div id="fav-users-box-sh">
-			montrer/masquer mes favoris
+			<?php echo _T('hide-show-favs'); ?>
 		</div>
 		<div id="fav-users-box" <?php echo $add_dn_fu; ?>>
 			<?php
@@ -55,8 +54,8 @@
 				<tbody>
 					<tr>
 						<td class="infos">
-							<label>autre utilisateur</label><br />
-							<small>nom d'utilisateur</small>
+							<label><?php echo _T('other-user'); ?></label><br />
+							<small><?php echo _T(''); ?>nom d'utilisateur</small>
 						</td>
 						<td class="fi">
 							<input type="text" class="text-input init-focus" name="username" value="<?php echo $in_username; ?>" /><button class="button" id="search-user">rechercher</button>
@@ -64,7 +63,7 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>montant</label>
+							<label><?php echo _T(''); ?>montant</label>
 						</td>
 						<td class="fi">
 							<table style="width: 100%; border-collapse: collapse; margin: 0px; padding: 0px;">
@@ -81,24 +80,27 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>remboursement</label>
+							<label><?php echo _T(''); ?>remboursement</label>
 						</td>
 						<td class="fi">
-							<input type="checkbox" value="1" name="is_payback" id="check-is-payback" /><span class="check_behind">il s'agit d'un remboursement officiel</span>
+							<input type="checkbox" value="1" name="is_payback" id="check-is-payback" /><span class="check_behind"><?php echo _T(''); ?>il s'agit d'un remboursement officiel</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>direction</label>
+							<label><?php echo _T(''); ?>direction</label>
 						</td>
 						<td class="fi">
-							<input type="radio" name="direction" value="iowethem" checked="checked" /><span class="check_behind" id="ad-iowe-txt">je dois à l'autre</span>&nbsp;<input type="radio" name="direction" value="theyoweme" /><span class="check_behind" id="ad-theyowe-txt">l'autre me doit</span>
+							<input type="radio" name="direction" value="iowethem" checked="checked" />
+							<span class="check_behind" id="ad-iowe-txt"><?php echo _T(''); ?>je dois à l'autre</span>&nbsp;
+							<input type="radio" name="direction" value="theyoweme" />
+							<span class="check_behind" id="ad-theyowe-txt"><?php echo _T(''); ?>l'autre me doit</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>description</label><br />
-							<small>facultatif</small>
+							<label><?php echo _T(''); ?>description</label><br />
+							<small><?php echo _T(''); ?>facultatif</small>
 						</td>
 						<td class="fi">
 							<input type="text" class="text-input" name="descr" />
@@ -106,8 +108,8 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>date officielle de la dette</label><br />
-							<small>format <code>2011-08-26</code> ou rien</small>
+							<label><?php echo _T(''); ?>date officielle de la dette</label><br />
+							<small><?php echo _T(''); ?>format <code>2011-08-26</code> ou rien</small>
 						</td>
 						<td class="fi">
 							<input type="text" class="text-input datepick" name="date_real" />

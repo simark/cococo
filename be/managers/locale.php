@@ -91,6 +91,7 @@ class LocaleManager extends CommonManager {
 		if (!$sess->is_user_logged()) {
 			return NULL;
 		}
+
 		$sf_id = parent::escape_string_more($sess->get_user()->id);
 		$sf_key = parent::escape_string_more($key);
 		
@@ -98,13 +99,24 @@ class LocaleManager extends CommonManager {
 		$sql = "CALL get_locale_string_for_user($sf_key, $sf_id)";
 		$res = $this->query($sql);
 		if ($res === false) {
+			trigger_error(
+				sprintf('Locale string %s not found with lang %s', $sf_key, $sf_id),
+				E_USER_ERROR);
 			return NULL;
 		}
-		$row = mysql_fetch_assoc($res);
 		
+		$row = mysql_fetch_assoc($res);
+
 		parent::stop_db();
 		
-		return $row['res'];
+		if ($row) {
+			return $row['res'];
+		} else {
+			trigger_error(
+				sprintf('Locale string %s not found', $sf_key, $sf_id),
+				E_USER_WARNING);
+			return '';
+		}
 	}
 	
 	/**

@@ -1,8 +1,8 @@
 <?php
 	// entrées initiales
-	$in_username = hs(gs($_GET['in_username']));
+	$in_username = hs(gs(isset($_GET['in_username']) ? $_GET['in_username']: ''));
 	$add_dn_fu = (strlen($in_username) > 0) ? ' style="display: none;" ' : '';
-	$in_amount = hs(gs($_GET['in_amount']));
+	$in_amount = hs(gs(isset($_GET['in_amount']) ? $_GET['in_amount'] : ''));
 	if (strlen($in_amount == 0)) {
 		$in_amount = 1;
 	}

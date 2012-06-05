@@ -136,8 +136,8 @@ class UserDAO extends CommonDAO {
 	 * 
 	 * @return array	Liste de tous les utilisateurs ou NULL
 	 */
-	public function get_all() {
-		return parent::get_all();
+	public function get_all($order_by = false, $method = NULL) {
+		return parent::get_all($order_by, $method);
 	}
 	
 	/**

@@ -51,8 +51,8 @@ class LocaleDAO extends CommonDAO {
 	 * 
 	 * @return array	NULL or array of VO
 	 */
-	public function get_all() {
-		return parent::get_all();
+	public function get_all($order_by = false, $method = NULL) {
+		return parent::get_all($order_by, $method);
 	}
 }
 ?>

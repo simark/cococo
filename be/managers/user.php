@@ -110,7 +110,8 @@ class UserManager extends CommonManager {
 		$sf_gender = parent::escape_string_more($vo->gender);
 		$sf_username = parent::escape_string_more($vo->username);
 		$sf_passwd = parent::escape_string_more($vo->passwd);
-		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email, $sf_birthday, $sf_gender, $sf_username, $sf_passwd)";
+		$sf_id_locale = parent::escape_string_more($vo->locale);
+		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email, $sf_birthday, $sf_gender, $sf_id_locale, $sf_username, $sf_passwd)";
 		$res = $this->query($sql);
 		$ret = ($res == true);
 		

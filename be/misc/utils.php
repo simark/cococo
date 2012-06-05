@@ -247,4 +247,54 @@
 			return "il y a " . inter_words($s);
 		}
 	}
+	
+	/**
+	 * Raccourci de traduction (correcte pour HTML) selon la
+	 * langue de l'utilisateur en cours.
+	 *
+	 * @param string $key	Clef de traduction
+	 */
+	function T($key) {
+		$lm = LocaleManager::instance();
+		
+		echo $lm->get_html_string($key);
+	}
+	
+	/**
+	 * Raccourci de traduction (correcte pour HTML) selon la
+	 * langue de l'utilisateur en cours (retourne).
+	 *
+	 * @param string $key	Clef de traduction
+	 * @return string	Chaine traduite
+	 */
+	function _T($key) {
+		$lm = LocaleManager::instance();
+		
+		return $lm->get_html_string($key);
+	}
+	
+	/**
+	 * Raccourci de traduction vers l'anglais (correcte pour
+	 * HTML).
+	 * 
+	 * @param string $key	Clef de traduction
+	 */
+	function TE($key) {
+		$lm = LocaleManager::instance();
+		
+		echo $lm->get_html_string_for_code($key, 'en');
+	}
+	
+	/**
+	 * Raccourci de traduction vers l'anglais (correcte pour
+	 * HTML) (retourne).
+	 * 
+	 * @param string $key	Clef de traduction
+	 * @return string	Chaine traduite
+	 */
+	function _TE($key) {
+		$lm = LocaleManager::instance();
+		
+		return $lm->get_html_string_for_code($key, 'en');
+	}
 ?>

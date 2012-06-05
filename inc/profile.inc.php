@@ -11,6 +11,7 @@
 	$gender = $vo->gender;
 	$checked_male = ($vo->gender == 'male') ? ' checked="checked" ' : '';
 	$checked_female = ($vo->gender == 'female') ? ' checked="checked" ' : '';
+	$locale_id = intval($vo->locale->id);
 ?>
 <div class="struct struct-body">
 	<div class="struct-inner-content">
@@ -89,6 +90,26 @@
 						</td>
 						<td class="fi">
 							<input type="radio" name="gender" value="male" <?php echo $checked_male; ?> /><span class="check_behind">homme</span>&nbsp;<input type="radio" name="gender" value="female" <?php echo $checked_female; ?> /><span class="check_behind">femme</span><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="infos">
+							<label>langue</label>
+						</td>
+						<td class="fi">
+							<select class="select-input" name="id_locale">
+								<?php
+									$vos = $g_be_lm->get_all_locales();
+									foreach ($vos as $locale_vo) {
+										if (!in_array($locale_vo->lang, $g_config['valid_locales'])) {
+											continue;
+										}
+										$z = ($locale_vo->id == $locale_id) ? ' selected="selected" ' : '';
+										$sf_vo = $locale_vo->get_html_safe_copy();
+										printf('<option value="%d" %s>%s</option>', $locale_vo->id, $z, $sf_vo->name);
+									}
+								?>
+							</select><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
 						</td>
 					</tr>
 				</tbody>

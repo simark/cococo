@@ -30,6 +30,9 @@
 		),
 		
 		/* suffixe du titre */
-		'title_suffix' => " &mdash; cococo"
+		'title_suffix' => " &mdash; cococo",
+		
+		/* langues supportées (codes) */
+		'valid_locales' => array('fr', 'en')
 	);
 ?>

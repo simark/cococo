@@ -7,15 +7,15 @@ if (!$g_be_session->is_user_logged()) { ?>
 					<table>
 						<tbody>
 							<tr>
-								<td><label>utilisateur</label><input type="text" class="text-input init-focus" name="username" /></td>
-								<td><label>mot de passe</label><input type="password" class="text-input" name="passwd" /></td>
-								<td><label></label><input type="submit" class="button" value="entrer" /></td>
+								<td><label><?php TE('username'); ?></label><input type="text" class="text-input init-focus" name="username" /></td>
+								<td><label><?php TE('password'); ?></label><input type="password" class="text-input" name="passwd" /></td>
+								<td><label></label><input type="submit" class="button" value="<?php TE('go_login'); ?>" /></td>
 							</tr>
 						</tbody>
 					</table>
 				</form>
 			</div>
-			<h2>bienvenue sur cococo!</h2>
+			<h2><?php TE('welcome'); ?></h2>
 			<p>
 			<strong>cococo</strong> est un système de gestion de dettes interpersonnelles qui vous aide à
 			vous rappeler qui vous doit combien depuis quand, et vice versa, combien vous devez à qui depuis

@@ -235,6 +235,7 @@ CREATE PROCEDURE add_user(
 	IN p_email TEXT,
 	IN p_birthday DATE,
 	IN p_gender VARCHAR(16),
+	IN p_id_locale INT,
 	IN p_username VARCHAR(30),
 	IN p_sha1_passwd VARCHAR(40)
 )
@@ -248,6 +249,7 @@ BEGIN
 		email,
 		birthday,
 		gender,
+		id_locale,
 		username,
 		passwd,
 		is_active,
@@ -260,6 +262,7 @@ BEGIN
 		p_email,
 		p_birthday,
 		p_gender,
+		p_id_locale,
 		p_username,
 		p_sha1_passwd,
 		TRUE,
@@ -392,6 +395,44 @@ END;
 $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS get_locale_string_for_user;
+DELIMITER $$
+CREATE PROCEDURE get_locale_string_for_user(
+	IN p_strkey VARCHAR(32),
+	IN p_id_user INT
+)
+BEGIN
+	SELECT
+		locales_strings.str AS res
+	FROM
+		users
+		LEFT JOIN locales_strings ON (users.id_locale = locales_strings.id_locale)
+	WHERE
+		users.id = p_id_user AND
+		locales_strings.strkey = p_strkey;
+END;
+$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_locale_string_for_code;
+DELIMITER $$
+CREATE PROCEDURE get_locale_string_for_code(
+	IN p_strkey VARCHAR(32),
+	IN p_code VARCHAR(8)
+)
+BEGIN
+	SELECT
+		locales_strings.str AS res
+	FROM
+		locales
+		LEFT JOIN locales_strings ON (locales.id = locales_strings.id_locale)
+	WHERE
+		locales.lang = p_code AND
+		locales_strings.strkey = p_strkey;
+END;
+$$
+DELIMITER ;
+
 DROP VIEW IF EXISTS vu_debts_details;
 CREATE VIEW vu_debts_details AS
 SELECT
@@ -449,4 +490,15 @@ WHERE
 	users.id = favs.id_user_fav AND
 	users.is_active = TRUE;
 
-	
+DROP VIEW IF EXISTS vu_users_locales;
+CREATE VIEW vu_users_locales AS
+SELECT
+	users.id AS id,
+	users.username AS username,
+	CONCAT(users.first_name, ' ', users.last_name) AS full_name,
+	locales.name AS locale
+FROM
+	users
+	LEFT JOIN locales ON (users.id_locale = locales.id)
+ORDER BY
+	users.username;

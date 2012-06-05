@@ -19,6 +19,7 @@ class UserVO extends CommonVO {
 	public $date_creation;	// Date
 	public $theme;
 	public $avatar;
+	public $locale;
 	
 	/**
 	 * Indique si l'utilisateur possède une fonctionnalité.

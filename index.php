@@ -62,8 +62,8 @@
 			<div id="nav-logo"></div>
 			<?php
 				if ($g_be_session->is_user_logged()) {
-					printf('<div id="nav-me">%s<span class="quit">(<a href="actions/r_logout.php">quitter</a>)</span></div>',
-						$g_be_user->get_full_name());
+					printf('<div id="nav-me">%s<span class="quit">(<a href="actions/r_logout.php">%s</a>)</span></div>',
+						$g_be_user->get_full_name(), _T('logout'));
 				}
 			?>
 			<?php
@@ -149,27 +149,7 @@
 					<p>Page introuvable...</p>
 				<?php }
 			?>
-			<div class="struct struct-body struct-body-spacer"></div>
-			<div class="struct struct-ban-blue-top"></div>
-			<div class="struct struct-ban-blue-body">
-				<div class="struct-ban-blue-inner-content">
-					<h2>Quelques nouvelles importantes...</h2>
-					<?php
-						// obtenir le feed RSS de The Onion
-						$rss_xml = file_get_contents("http://feeds.theonion.com/theonion/daily");
-						
-						// chargement des documents
-						$xsl = new DOMDocument();
-						$xsl->load("res/xml_xsl/the_onion_rss.xsl");
-						$xml = new DOMDocument();
-						$xml->loadXML($rss_xml);
-						
-						$proc = new XSLTProcessor();
-						$proc->importStylesheet($xsl);
-						echo $proc->transformToXML($xml);
-					?>
-				</div>
-			</div>
+			
 			<!-- bas -->
 			<div class="struct struct-body struct-body-spacer"></div>
 			<div class="struct struct-bottom"></div>

@@ -8,7 +8,7 @@ class DebtManager extends CommonManager {
 	/**
 	 * Instance du singleton.
 	 * 
-	 * @var UserManager
+	 * @var DebtManager
 	 */
 	private static $_instance;
 	

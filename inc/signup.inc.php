@@ -79,6 +79,24 @@
 					</tr>
 					<tr>
 						<td class="infos">
+							<label>langue</label>
+						</td>
+						<td class="fi">
+							<select class="select-input" name="id_locale">
+								<?php
+									$vos = $g_be_lm->get_all_locales();
+									foreach ($vos as $locale_vo) {
+										if (!in_array($locale_vo->lang, $g_config['valid_locales'])) {
+											continue;
+										}
+										$sf_vo = $locale_vo->get_html_safe_copy();
+										printf('<option value="%d">%s</option>', $locale_vo->id, $sf_vo->name);
+									}
+								?>
+							</select>
+						</td>
+					<tr>
+						<td class="infos">
 							<label>utilisateur</label><br />
 							<small>caractères alphanumériques seulement</small>
 						</td>

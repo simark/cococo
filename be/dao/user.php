@@ -40,6 +40,24 @@ class UserDAO extends CommonDAO {
 	}
 	
 	/**
+	 * Attribue ses paramètres régionaux à l'utilisateur.
+	 */
+	private function set_locale($vo) {
+		// Requête
+		$sql = "SELECT
+				id_locale AS id
+			FROM
+				users
+			WHERE
+				id = {$vo->id}";
+		$row = $this->get_single_row($sql);
+		
+		// On devrait avoir le bon ID ici
+		$locale_dao = new LocaleDAO($this->_conn);
+		$vo->locale = $locale_dao->get_by_id($row['id']);
+	}
+	
+	/**
 	 * Attribue ses fonctionnalités à un utilisateur (selon ses groupes).
 	 * 
 	 * @param UserVO $vo	Utilisateur
@@ -67,6 +85,7 @@ class UserDAO extends CommonDAO {
 		}
 		$this->set_groups($vo);
 		$this->set_feature_names($vo);
+		$this->set_locale($vo);
 		
 		return $vo;
 	}

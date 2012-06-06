@@ -51,6 +51,7 @@ $en = array(
 	'new-password-confirm' => 'new password (confirm)',
 	'send' => 'send',
 	'modify' => 'modify',
+	'signup' => 'signup',
 );
 
 $locales_strings = array(

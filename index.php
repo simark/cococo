@@ -77,10 +77,10 @@
 						
 					// TODO: traduire ça aussi
 					$menu_items = array(
-						"cococo" => "MON COCOCO",
-						"adddebt" => "++DETTE",
-						"favs" => "MES AMIS",
-						"profile" => "MON PROFIL"
+						'cococo' => _T('my-cococo'),
+						'adddebt' => _T('add-debt'),
+						'favs' => _T('my-friends'),
+						'profile' => _T('my-profile')
 					);
 				} else {
 					echo '<div id="nav-me">';
@@ -96,7 +96,7 @@
 
 					// TODO: traduire ça aussi
 					$menu_items = array(
-						"signup" => "INSCRIPTION"
+						'signup' => _T('signup')
 					);
 				}
 			?>

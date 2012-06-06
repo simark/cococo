@@ -7,6 +7,7 @@
 	$g_page_key = get_page_key($g_config['valid_pages']);
 	
 	/* titre de la page */
+	// TODO: traduire
 	$g_title = $g_config['valid_pages'][$g_page_key]['title'];
 	
 	/* suffixe du titre */
@@ -23,6 +24,15 @@
 			return sprintf('<span class="nav-item nav-item-selected">%s</span>', $text);
 		} else {
 			return sprintf('<span class="nav-item"><a href="./?p=%s">%s</a></span>', $key, $text);
+		}
+	}
+	
+	/* locale (cookies) */
+	$g_cookies_locale = $g_config['valid_locales'][0];
+	if (isset($_COOKIE['locale'])) {
+		$cl = $_COOKIE['locale'];
+		if (in_array($cl, $g_config['valid_locales'])) {
+			$g_cookies_locale = $cl;
 		}
 	}
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -64,24 +74,42 @@
 				if ($g_be_session->is_user_logged()) {
 					printf('<div id="nav-me">%s<span class="quit">(<a href="actions/r_logout.php">%s</a>)</span></div>',
 						$g_be_user->get_full_name(), _T('logout'));
+						
+					// TODO: traduire ça aussi
+					$menu_items = array(
+						"cococo" => "MON COCOCO",
+						"adddebt" => "++DETTE",
+						"favs" => "MES AMIS",
+						"profile" => "MON PROFIL"
+					);
+				} else {
+					echo '<div id="nav-me">';
+					$good = array();
+					foreach ($g_config['valid_locales'] as $locale) {
+						if ($g_cookies_locale != $locale) {
+							$good[] = sprintf('<a href="./actions/r_set_cookies_locale.php?locale=%s">%s</a>',
+								$locale, $locale);
+						}
+					}
+					echo implode('&nbsp;/&nbsp;', $good);
+					echo '</div>';
+
+					// TODO: traduire ça aussi
+					$menu_items = array(
+						"signup" => "INSCRIPTION"
+					);
 				}
 			?>
+			<div id="nav-items">
 			<?php
-				// paramètres
-				$logged = ($g_be_session->is_user_logged()) ? 1 : 0;
-				
-				// chargement des documents
-				$xsl = new DOMDocument();
-				$xsl->load("res/xml_xsl/main_nav.xsl");
-				$xml = new DOMDocument();
-				$xml->load("res/xml_xsl/main_nav.xml");
-				
-				$proc = new XSLTProcessor();
-				$proc->setParameter('', 'logged', $logged);
-				$proc->setParameter('', 'selectedkey', $g_page_key);
-				$proc->importStylesheet($xsl);
-				echo $proc->transformToXML($xml);
+				foreach ($menu_items as $k => $item) {
+					$add_class = ($k == $g_page_key) ? " nav-item-selected " : "";
+					$sf_item = hs($item);
+					printf('<span class="nav-item %s"><a href="?p=%s" title="%s">%s</a></span>',
+						$add_class, $k, $k, $sf_item);
+				}
 			?>
+			</div>
 		</div>
 		
 		<!-- structure -->

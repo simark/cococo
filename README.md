@@ -1,4 +1,4 @@
 cococo
 ======
 
-Next generation lockless realtime debt tracking system
+Next generation distributed lockless realtime debt tracking system

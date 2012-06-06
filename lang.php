@@ -13,6 +13,7 @@ quand. Commencez dès maintenant en quelques étapes&nbsp;:
 </p>
 LOL
 ,
+	'logout' => 'quitter'
 );
 
 $en = array(

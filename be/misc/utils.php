@@ -14,7 +14,8 @@
 	 * @return string		Clef actuelle
 	 */
 	function get_page_key($valid_pages) {
-		$ret = array_keys($valid_pages)[0];
+		$ret = array_keys($valid_pages);
+		$ret = $ret[0];
 
 		if (!isset($_GET['p'])) {
 			return $ret;

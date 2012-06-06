@@ -1,11 +1,32 @@
 <?php
 	/* requis */
+<<<<<<< HEAD
 	require_once 'config.php';	// configuration du front-end
 	require_once 'be/init.php';	// initialisation du back-end
+=======
+	require_once("config.php");	// configuration du front-end
+	require_once("be/init.php");	// initialisation du back-end
+	require_once("lang.php"); // locale
+	require_once("utils.php"); // front-end utilities
+>>>>>>> Back-end locale => front-end.
 	
 	/* clef de la page */
 	$g_page_key = get_page_key($g_config['valid_pages']);
 	
+	// locale (cookies if not logged in, otherwise from user's settings)
+	$g_locale = $g_config['valid_locales'][0];
+	if ($g_be_session->is_user_logged()) {
+		$g_locale = $g_be_user->locale->lang;
+	} else if (isset($_COOKIE['locale'])) {
+		$cl = $_COOKIE['locale'];
+		if (in_array($cl, $g_config['valid_locales'])) {
+			$g_locale = $cl;
+		}
+	}
+	
+	// locale strings
+	$g_locales_strings = $g_locales_strings_all[$g_locale];
+
 	/* titre de la page */
 	$g_title = _T($g_config['valid_pages'][$g_page_key]);
 	
@@ -23,15 +44,6 @@
 			return sprintf('<span class="nav-item nav-item-selected">%s</span>', $text);
 		} else {
 			return sprintf('<span class="nav-item"><a href="./?p=%s">%s</a></span>', $key, $text);
-		}
-	}
-	
-	/* locale (cookies) */
-	$g_cookies_locale = $g_config['valid_locales'][0];
-	if (isset($_COOKIE['locale'])) {
-		$cl = $_COOKIE['locale'];
-		if (in_array($cl, $g_config['valid_locales'])) {
-			$g_cookies_locale = $cl;
 		}
 	}
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -74,7 +86,6 @@
 					printf('<div id="nav-me">%s<span class="quit">(<a href="actions/r_logout.php">%s</a>)</span></div>',
 						$g_be_user->get_full_name(), _T('logout'));
 						
-					// TODO: traduire ça aussi
 					$menu_items = array(
 						'cococo' => _T('my-cococo'),
 						'adddebt' => _T('add-debt'),
@@ -85,7 +96,7 @@
 					echo '<div id="nav-me">';
 					$good = array();
 					foreach ($g_config['valid_locales'] as $locale) {
-						if ($g_cookies_locale != $locale) {
+						if ($g_locale != $locale) {
 							$good[] = sprintf('<a href="./actions/r_set_cookies_locale.php?locale=%s">%s</a>',
 								$locale, $locale);
 						}
@@ -93,7 +104,6 @@
 					echo implode('&nbsp;/&nbsp;', $good);
 					echo '</div>';
 
-					// TODO: traduire ça aussi
 					$menu_items = array(
 						'signup' => _T('signup')
 					);

@@ -25,7 +25,6 @@
 	require_once(__DIR__ . "/managers/common.php");
 	require_once(__DIR__ . "/managers/user.php");
 	require_once(__DIR__ . "/managers/debt.php");
-	require_once(__DIR__ . "/managers/locale.php");
 	
 	// configurations globales importantes
 	date_default_timezone_set("America/Montreal");
@@ -35,7 +34,6 @@
 	$g_be_session = Session::instance();
 	$g_be_um = UserManager::instance();
 	$g_be_dm = DebtManager::instance();
-	$g_be_lm = LocaleManager::instance();
 	$g_be_va = Validator::instance();
 	
 	// utilisateur connecté

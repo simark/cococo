@@ -1,6 +1,6 @@
-
-DROP PROCEDURE IF EXISTS assign_user_to_group;
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS assign_user_to_group $$
 CREATE PROCEDURE assign_user_to_group(
 	IN p_id_user INT,
 	IN p_id_group INT
@@ -18,10 +18,8 @@ BEGIN
 	);
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS unassign_user_from_group;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS unassign_user_from_group $$
 CREATE PROCEDURE unassign_user_from_group(
 	IN p_id_user INT,
 	IN p_id_group INT
@@ -34,11 +32,8 @@ BEGIN
 		id_group = p_id_group;
 END;
 $$
-DELIMITER ;
 
-
-DROP PROCEDURE IF EXISTS add_debt;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS add_debt $$
 CREATE PROCEDURE add_debt(
 	IN p_id_user INT,
 	IN p_other_user TEXT,
@@ -105,10 +100,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS confirm_debt;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS confirm_debt $$
 CREATE PROCEDURE confirm_debt(
 	IN p_id_user INT,
 	IN p_id_debt INT
@@ -138,10 +131,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS invalidate_debt;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS invalidate_debt $$
 CREATE PROCEDURE invalidate_debt(
 	IN p_id_user INT,
 	IN p_id_debt INT
@@ -169,10 +160,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS update_user_active;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS update_user_active $$
 CREATE PROCEDURE update_user_active(
 	IN p_id_user INT,
 	IN p_state BOOLEAN
@@ -186,10 +175,8 @@ BEGIN
 		id = p_id_user;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS update_user_admin;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS update_user_admin $$
 CREATE PROCEDURE update_user_admin(
 	IN p_id_user INT,
 	IN p_state BOOLEAN
@@ -202,10 +189,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS delete_user;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS delete_user $$
 CREATE PROCEDURE delete_user(
 	IN p_id_user INT
 )
@@ -225,10 +210,8 @@ BEGIN
 		id = p_id_user;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS add_user;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS add_user $$
 CREATE PROCEDURE add_user(
 	IN p_first_name TEXT,
 	IN p_last_name TEXT,
@@ -287,10 +270,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS update_user;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS update_user $$
 CREATE PROCEDURE update_user(
 	IN p_id_user INT,
 	IN p_first_name TEXT,
@@ -323,10 +304,8 @@ BEGIN
 		id = p_id_user;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS add_user_fav;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS add_user_fav $$
 CREATE PROCEDURE add_user_fav(
 	IN p_id_user INT,
 	IN p_fav_username TEXT
@@ -362,10 +341,8 @@ BEGIN
 	END IF;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS delete_user_fav;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS delete_user_fav $$
 CREATE PROCEDURE delete_user_fav(
 	IN p_id_user INT,
 	IN p_id_user_fav INT
@@ -378,10 +355,8 @@ BEGIN
 		id_user_fav = p_id_user_fav;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS delete_all_user_favs;
-DELIMITER $$
+DROP PROCEDURE IF EXISTS delete_all_user_favs $$
 CREATE PROCEDURE delete_all_user_favs(
 	IN p_id_user INT,
 	IN p_id_user_fav INT
@@ -393,44 +368,7 @@ BEGIN
 		id_user = p_id_user;
 END;
 $$
-DELIMITER ;
 
-DROP PROCEDURE IF EXISTS get_locale_string_for_user;
-DELIMITER $$
-CREATE PROCEDURE get_locale_string_for_user(
-	IN p_strkey VARCHAR(32),
-	IN p_id_user INT
-)
-BEGIN
-	SELECT
-		locales_strings.str AS res
-	FROM
-		users
-		LEFT JOIN locales_strings ON (users.id_locale = locales_strings.id_locale)
-	WHERE
-		users.id = p_id_user AND
-		locales_strings.strkey = p_strkey;
-END;
-$$
-DELIMITER ;
-
-DROP PROCEDURE IF EXISTS get_locale_string_for_code;
-DELIMITER $$
-CREATE PROCEDURE get_locale_string_for_code(
-	IN p_strkey VARCHAR(32),
-	IN p_code VARCHAR(8)
-)
-BEGIN
-	SELECT
-		locales_strings.str AS res
-	FROM
-		locales
-		LEFT JOIN locales_strings ON (locales.id = locales_strings.id_locale)
-	WHERE
-		locales.lang = p_code AND
-		locales_strings.strkey = p_strkey;
-END;
-$$
 DELIMITER ;
 
 DROP VIEW IF EXISTS vu_debts_details;

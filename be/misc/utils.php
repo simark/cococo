@@ -247,6 +247,7 @@
 			return "il y a " . inter_words($s);
 		}
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * Raccourci de traduction (correcte pour HTML) selon la
@@ -298,3 +299,6 @@
 		return $lm->get_html_string_for_code($key, 'en');
 	}
 ?>
+=======
+?>
+>>>>>>> Back-end locale => front-end.

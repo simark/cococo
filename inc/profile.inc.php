@@ -99,14 +99,9 @@
 						<td class="fi">
 							<select class="select-input" name="id_locale">
 								<?php
-									$vos = $g_be_lm->get_all_locales();
-									foreach ($vos as $locale_vo) {
-										if (!in_array($locale_vo->lang, $g_config['valid_locales'])) {
-											continue;
-										}
-										$z = ($locale_vo->id == $locale_id) ? ' selected="selected" ' : '';
-										$sf_vo = $locale_vo->get_html_safe_copy();
-										printf('<option value="%d" %s>%s</option>', $locale_vo->id, $z, $sf_vo->name);
+									foreach ($g_config['valid_locales'] as $locale) {
+										$z = ($locale == $g_locale) ? ' selected="selected" ' : '';
+										printf('<option value="%d" %s>%s</option>', $locale, $z, $locale);
 									}
 								?>
 							</select><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?></span>

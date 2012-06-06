@@ -1,20 +1,19 @@
 <?php
 	/* requis */
-	require_once("config.php");	// configuration du front-end
-	require_once("be/init.php");	// initialisation du back-end
+	require_once 'config.php';	// configuration du front-end
+	require_once 'be/init.php';	// initialisation du back-end
 	
 	/* clef de la page */
 	$g_page_key = get_page_key($g_config['valid_pages']);
 	
 	/* titre de la page */
-	// TODO: traduire
-	$g_title = $g_config['valid_pages'][$g_page_key]['title'];
+	$g_title = _T($g_config['valid_pages'][$g_page_key]);
 	
 	/* suffixe du titre */
 	$g_title .= $g_config['title_suffix'];
 	
 	/* page à inclure */
-	$g_inc = "./inc/$g_page_key.inc.php";
+	$g_inc = './inc/'. $g_config['valid_pages'][$g_page_key] . '.inc.php';
 	
 	/* afficher le menu */
 	function get_nav_item($key, $text) {

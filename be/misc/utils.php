@@ -14,14 +14,14 @@
 	 * @return string		Clef actuelle
 	 */
 	function get_page_key($valid_pages) {
-		$ret = array_keys($valid_pages);
-		$ret = $ret[0];
+		$ret = array_keys($valid_pages)[0];
+
 		if (!isset($_GET['p'])) {
 			return $ret;
 		}
 		$asked = trim ($_GET['p']);
-		if (array_key_exists($asked, $valid_pages)) {
-			$ret = $asked;
+		if ($found = array_search($asked, $valid_pages)) {
+			$ret = $found;
 		}
 		
 		return $ret;

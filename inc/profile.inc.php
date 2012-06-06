@@ -15,9 +15,9 @@
 ?>
 <div class="struct struct-body">
 	<div class="struct-inner-content">
-		<h2 class="first">mes informations</h2>
+		<h2 class="first"><?php T('my-profile'); ?></h2>
 		<p>
-		Les champs sont modifiés sur-le-champ lorsque vous cliquez à l'extérieur de ceux-ci.
+		<?php T('my-profile-desc'); ?>
 		</p>
 	</div>
 </div>
@@ -29,26 +29,26 @@
 				<tbody>
 					<tr>
 						<td class="infos">
-							<label>prénom</label>
+							<label><?php T('first-name'); ?></label>
 						</td>
 						<td class="fi">
-							<input type="text" class="text-input" name="first_name" value="<?php echo $first_name; ?>" /><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							<input type="text" class="text-input" name="first_name" value="<?php echo $first_name; ?>" /><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?></span>
 						</td>
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>nom</label>
+							<label><?php T('last-name'); ?></label>
 						</td>
 						<td class="fi">
-							<input type="text" class="text-input" name="last_name" value="<?php echo $last_name; ?>" /><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							<input type="text" class="text-input" name="last_name" value="<?php echo $last_name; ?>" /><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>courriel</label>
+							<label><?php T('email'); ?></label>
 						</td>
 						<td class="fi">
-							<input type="text" class="text-input" name="email" value="<?php echo $email; ?>" /><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							<input type="text" class="text-input" name="email" value="<?php echo $email; ?>" /><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
 						</td>
 					</tr>
 					<tr>
@@ -81,7 +81,7 @@
 										echo "<option value=\"$i\" $z>$i</option>";
 									}
 								?>
-							</select><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							</select><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
 						</td>
 					</tr>
 					<tr>
@@ -89,12 +89,12 @@
 							<label>sexe</label>
 						</td>
 						<td class="fi">
-							<input type="radio" name="gender" value="male" <?php echo $checked_male; ?> /><span class="check_behind">homme</span>&nbsp;<input type="radio" name="gender" value="female" <?php echo $checked_female; ?> /><span class="check_behind">femme</span><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							<input type="radio" name="gender" value="male" <?php echo $checked_male; ?> /><span class="check_behind">homme</span>&nbsp;<input type="radio" name="gender" value="female" <?php echo $checked_female; ?> /><span class="check_behind">femme</span><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>langue</label>
+							<label><?php T('language'); ?></label>
 						</td>
 						<td class="fi">
 							<select class="select-input" name="id_locale">
@@ -109,7 +109,7 @@
 										printf('<option value="%d" %s>%s</option>', $locale_vo->id, $z, $sf_vo->name);
 									}
 								?>
-							</select><span class="info info-modified">modifié!</span><span class="info info-invalid">valeur non valide...</span>
+							</select><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?></span>
 						</td>
 					</tr>
 				</tbody>
@@ -119,7 +119,7 @@
 </div>
 <div class="struct struct-body">
 	<div class="struct-inner-content">
-		<h2>avatar</h2>
+		<h2><?php T('avatar'); ?></h2>
 	</div>
 </div>
 <div class="struct struct-ban-blue-top"></div>
@@ -130,7 +130,7 @@
 				<tbody>
 					<tr>
 						<td class="infos">
-							<label>avatar actuel</label>
+							<label><?php T('current-avatar'); ?></label>
 						</td>
 						<td class="fi">
 							<img src="res/images/avatars/<?php echo $g_be_user->avatar; ?>.png" alt="" />
@@ -138,8 +138,8 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>nouvelle image</label><br />
-							<small>sera redimensionnée à 48&nbsp;px</small>
+							<label><?php T('new-avatar'); ?></label><br />
+							<small><?php T('image-will-be-resized-to-48px'); ?></small>
 						</td>
 						<td class="fi">
 							<input type="file" name="file" />
@@ -150,7 +150,7 @@
 							<label></label>
 						</td>
 						<td>
-							<input class="button" type="submit" value="envoyer" />
+							<input class="button" type="submit" value="<?php T('send'); ?>" />
 						</td>
 					</tr>
 				</tbody>
@@ -160,7 +160,7 @@
 </div>
 <div class="struct struct-body">
 	<div class="struct-inner-content">
-		<h2>mot de passe</h2>
+		<h2><?php T('password'); ?></h2>
 	</div>
 </div>
 <div class="struct struct-ban-blue-top"></div>
@@ -171,7 +171,7 @@
 				<tbody>
 					<tr>
 						<td class="infos">
-							<label>nouveau mot de passe</label>
+							<label><?php T('new-password'); ?></label>
 						</td>
 						<td class="fi">
 							<input type="password" class="text-input" name="password" />
@@ -179,7 +179,7 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>nouveau mot de passe (confirmation)</label>
+							<label><?php T('new-password-confirm'); ?></label>
 						</td>
 						<td class="fi">
 							<input type="password" class="text-input" name="password_conf" />
@@ -190,7 +190,7 @@
 							<label></label>
 						</td>
 						<td>
-							<input class="button" type="submit" value="modifier" />
+							<input class="button" type="submit" value="<?php T('modify'); ?>" />
 						</td>
 					</tr>
 				</tbody>

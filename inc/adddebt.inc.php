@@ -58,7 +58,7 @@
 							<small><?php T('username'); ?></small>
 						</td>
 						<td class="fi">
-							<input type="text" class="text-input init-focus" name="username" value="<?php echo $in_username; ?>" /><button class="button" id="search-user">rechercher</button>
+							<input type="text" class="text-input init-focus" name="username" value="<?php echo $in_username; ?>" /><button class="button" id="search-user"><?php T('search'); ?></button>
 						</td>
 					</tr>
 					<tr>

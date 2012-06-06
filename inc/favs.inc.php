@@ -1,9 +1,8 @@
 <div class="struct struct-body">
 	<div class="struct-inner-content">
-		<h2 class="first">mes favoris</h2>
+		<h2 class="first"><?php T('my-friends'); ?></h2>
 		<p>
-		Vos <strong>favoris</strong> sont un ensemble d'utilisateurs facilement accessibles pour l'ajout de
-		dettes et d'autres opérations sur le système.
+		<?php T('my-friends-desc'); ?>
 		</p>
 	</div>
 </div>
@@ -11,17 +10,19 @@
 <div class="struct struct-ban-blue-top"></div>
 <div class="struct struct-ban-blue-body">
 	<div class="struct-ban-blue-inner-content">
-		<h2>ajouter un utilisateur à mes favoris</h2>
+		<h2><?php T('add-user-to-friends'); ?></h2>
 		<form id="form-adddebt" action="" class="kf">
 			<table>
 				<tbody>
 					<tr>
 						<td class="infos">
-							<label>autre utilisateur</label><br />
-							<small>nom d'utilisateur</small>
+							<label><?php T('other-person'); ?></label><br />
+							<small><?php T('username'); ?></small>
 						</td>
 						<td class="fi">
-							<input type="text" class="text-input init-focus" name="username" /><button class="button" id="add-user-to-favs">ajouter</button><button class="button" id="search-user">rechercher</button>
+							<input type="text" class="text-input init-focus" name="username" />
+							<button class="button" id="add-user-to-favs"><?php T('add-user'); ?></button>
+							<button class="button" id="search-user"><?php T('search-user'); ?></button>
 						</td>
 					</tr>
 				</tbody>

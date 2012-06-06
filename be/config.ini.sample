@@ -7,4 +7,4 @@ db_passwd = ""
 db_db = "cococo"
 
 [sessions]
-sess_exp = 600
+sess_exp = 3600

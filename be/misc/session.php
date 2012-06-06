@@ -23,12 +23,14 @@ class Session {
 		if ($this->is_user_logged()) {
 			$conf = Config::instance();
 			$exp = $conf->get("sess_exp");
-			$life = time() - $this->get_data("timeout");
-			if ($life > $exp) {
-				$this->destroy();
-				header("Location: ./?smsg=timeout");
-			} else {
-				$this->set_data("timeout", time());
+			if ($exp > 0) {
+				$life = time() - $this->get_data("timeout");
+				if ($life > $exp) {
+					$this->destroy();
+					header("Location: ./?smsg=timeout");
+				} else {
+					$this->set_data("timeout", time());
+				}
 			}
 		}
 	}

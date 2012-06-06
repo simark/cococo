@@ -110,7 +110,7 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label><?php T('debt-date'); ?>date officielle de la dette</label><br />
+							<label><?php T('debt-date'); ?></label><br />
 							<small><?php T('date-format-desc'); ?></small>
 						</td>
 						<td class="fi">

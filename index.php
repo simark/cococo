@@ -1,14 +1,9 @@
 <?php
 	/* requis */
-<<<<<<< HEAD
 	require_once 'config.php';	// configuration du front-end
 	require_once 'be/init.php';	// initialisation du back-end
-=======
-	require_once("config.php");	// configuration du front-end
-	require_once("be/init.php");	// initialisation du back-end
-	require_once("lang.php"); // locale
-	require_once("utils.php"); // front-end utilities
->>>>>>> Back-end locale => front-end.
+	require_once 'lang.php'; // locale
+	require_once 'utils.php'; // front-end utilities
 	
 	/* clef de la page */
 	$g_page_key = get_page_key($g_config['valid_pages']);

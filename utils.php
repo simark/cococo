@@ -2,6 +2,10 @@
 	/**
 	 * Front-end utilities.
 	 */
+	 
+	 function err_ls_not_found($key) {
+		 trigger_error(sprintf("Locale string not found for key '%s'.", $key));
+	 }
 	
 	/**
 	 * HTML-safe translation shortcut for current locale.
@@ -11,7 +15,11 @@
 	function T($key) {
 		global $g_locales_strings;
 		
-		echo hs($g_locales_strings[$key]);
+		if (isset($g_locales_strings[$key])) {
+			echo hs($g_locales_strings[$key]); 
+		} else {
+			err_ls_not_found($key);
+		}
 	}
 	
 	/**
@@ -25,7 +33,12 @@
 	function _T($key) {
 		global $g_locales_strings;
 		
-		return hs($g_locales_strings[$key]);
+		if (isset($g_locales_strings[$key])) {
+			return hs($g_locales_strings[$key]);
+		} else {
+			err_ls_not_found($key);
+			return '';
+		}
 	}
 	
 	/**
@@ -36,7 +49,11 @@
 	function T_($key) {
 		global $g_locales_strings;
 		
-		echo $g_locales_strings[$key];
+		if (isset($g_locales_strings[$key])) {
+			echo $g_locales_strings[$key];
+		} else {
+			err_ls_not_found($key);
+		}
 	}
 	
 	/**
@@ -50,6 +67,11 @@
 	function _T_($key) {
 		global $g_locales_strings;
 		
-		return $g_locales_strings[$key];
+		if (isset($g_locales_strings[$key])) {
+			return $g_locales_strings[$key];
+		} else {
+			err_ls_not_found($key);
+			return '';
+		}
 	}
 ?>

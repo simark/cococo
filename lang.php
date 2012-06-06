@@ -77,7 +77,7 @@ LOL
 	'about' => 'about',
 );
 
-$locales_strings = array(
+$g_locales_strings_all = array(
 	'en' => $en,
 	'fr' => $fr,
 );

@@ -3,5 +3,7 @@ php_value error_reporting 8191
 php_flag display_errors on
 
 # rewrite rules
-RewriteEngine on
-RewriteRule ^/?([a-zA-Z_]+)$ ?p=$1 [L]
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule ^/?([a-zA-Z_]+)$ ?p=$1 [L]
+</IfModule>

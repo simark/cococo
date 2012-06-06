@@ -38,7 +38,7 @@ if (!$g_be_session->is_user_logged()) { ?>
 <?php } else { ?>
 	<div class="struct struct-body">
 		<div class="struct-inner-content">
-			<h2 class="first"><?php echo _T('my-cococo'); ?></h2>
+			<h2 class="first"><?php T('my-cococo'); ?></h2>
 		</div>
 </div>
 	<?php
@@ -106,9 +106,9 @@ if (!$g_be_session->is_user_logged()) { ?>
 	<div class="struct struct-body">
 		<div class="struct-inner-content">
 			<div id="select-tab-box">
-				<button class="button" id="sel-tab-total"><?php echo _T('totals'); ?></button>
-				<button class="button" id="sel-tab-summary"><?php echo _T('summary'); ?></button>
-				<button class="button" id="sel-tab-history"><?php echo _T('history'); ?></button>
+				<button class="button" id="sel-tab-total"><?php T('totals'); ?></button>
+				<button class="button" id="sel-tab-summary"><?php T('summary'); ?></button>
+				<button class="button" id="sel-tab-history"><?php T('history'); ?></button>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../misc/lang.php';
+
 /**
  * Manages locales.
  *
@@ -48,22 +50,21 @@ class LocaleManager extends CommonManager {
 	 * @return string	Translated string or NULL if not found
 	 */
 	public function get_string_for_code($key, $code) {
-		parent::start_db();
+		global $locales_strings;
 		
-		$sf_code = parent::escape_string_more($code);
-		$sf_key = parent::escape_string_more($key);
-		
-		// Requête SQL
-		$sql = "CALL get_locale_string_for_code($sf_key, $sf_code)";
-		$res = $this->query($sql);
-		if ($res === false) {
-			return NULL;
+		if (isset($locales_strings[$code][$key])) {
+			return $locales_strings[$code][$key];
+		} else if (isset($locales_strings['en'][$key])) {
+			trigger_error(
+				sprintf('Locale string \'%s\' not found for language \'%s\'', $key, $code),
+				E_USER_WARNING);
+			return $locales_strings['en'][$key];
+		} else {
+			trigger_error(
+				sprintf('Locale string \'%s\' not found', $key),
+				E_USER_WARNING);
+			return "";
 		}
-		$row = mysql_fetch_assoc($res);
-		
-		parent::stop_db();
-		
-		return $row['res'];
 	}
 	
 	/**
@@ -84,39 +85,15 @@ class LocaleManager extends CommonManager {
 	 * @return string	Translated string or NULL if not found
 	 */
 	public function get_string($key) {
-		parent::start_db();
+		global $g_be_user;
 		
-		// Utilisateur en cours
-		$sess = Session::instance();
-		if (!$sess->is_user_logged()) {
-			return NULL;
-		}
-
-		$sf_id = parent::escape_string_more($sess->get_user()->id);
-		$sf_key = parent::escape_string_more($key);
-		
-		// Requête SQL
-		$sql = "CALL get_locale_string_for_user($sf_key, $sf_id)";
-		$res = $this->query($sql);
-		if ($res === false) {
-			trigger_error(
-				sprintf('Locale string %s not found with lang %s', $sf_key, $sf_id),
-				E_USER_ERROR);
-			return NULL;
-		}
-		
-		$row = mysql_fetch_assoc($res);
-
-		parent::stop_db();
-		
-		if ($row) {
-			return $row['res'];
+		if ($g_be_user) {
+			$lang = $g_be_user->locale->lang;
 		} else {
-			trigger_error(
-				sprintf('Locale string %s not found', $sf_key, $sf_id),
-				E_USER_WARNING);
-			return '';
+			$lang = 'en';
 		}
+		
+		return $this->get_string_for_code($key, $lang);
 	}
 	
 	/**

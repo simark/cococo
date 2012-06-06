@@ -17,7 +17,7 @@
 		$g_be_va->simple_date($birthday),
 		$g_be_va->gender($gender),
 		$g_be_va->username($username),
-		$g_be_va->locale_id($id_locale), // TODO: make this prettier
+		$g_be_va->locale_code($locale_code), // TODO: make this prettier
 		!is_null($passwd),
 		!is_null($passwd_conf),
 		$passwd === $passwd_conf,

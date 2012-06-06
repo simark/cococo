@@ -230,14 +230,24 @@ class UserManager extends CommonManager {
 		$sess = Session::instance();
 		$user = $sess->get_user();
 		$my_id = $user->id;
-		
 		$sf_field_value = parent::escape_string_more($field_value);
-		$sql = "UPDATE
-				users
-			SET
-				$field_name = $sf_field_value
-			WHERE
-				id = $my_id";
+		
+		if ($field_name == "locale_code") {
+			// Special case for locale code
+			$sql = "UPDATE
+					users
+				SET
+					id_locale = (SELECT id FROM locales WHERE lang = $sf_field_value)
+				WHERE
+					id = $my_id";
+		} else {
+			$sql = "UPDATE
+					users
+				SET
+					$field_name = $sf_field_value
+				WHERE
+					id = $my_id";
+		}
 		$res = $this->query($sql);
 		if ($res === false) {
 			$txr->content = false;

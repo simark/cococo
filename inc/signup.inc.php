@@ -82,15 +82,11 @@
 							<label>langue</label>
 						</td>
 						<td class="fi">
-							<select class="select-input" name="id_locale">
+							<select class="select-input" name="locale_code">
 								<?php
-									$vos = $g_be_lm->get_all_locales();
-									foreach ($vos as $locale_vo) {
-										if (!in_array($locale_vo->lang, $g_config['valid_locales'])) {
-											continue;
-										}
-										$sf_vo = $locale_vo->get_html_safe_copy();
-										printf('<option value="%d">%s</option>', $locale_vo->id, $sf_vo->name);
+									foreach ($g_config['valid_locales'] as $locale) {
+										$z = ($locale == $g_locale) ? ' selected="selected" ' : '';
+										printf('<option value="%s" %s>%s</option>', $locale, $z, $locale);
 									}
 								?>
 							</select>

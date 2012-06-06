@@ -45,9 +45,9 @@
 			$valid = $g_be_va->gender($fv);
 		} else if ($fn == "email") {
 			$valid = $g_be_va->email($fv);
-		} else if ($fn == "id_locale") {
+		} else if ($fn == "locale_code") {
 			// TODO: make this prettier
-			$valid = $g_be_va->locale_id($fv);
+			$valid = $g_be_va->locale_code($fv);
 		} else {
 			echo 0;
 			exit(1);

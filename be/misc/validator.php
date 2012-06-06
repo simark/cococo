@@ -231,21 +231,25 @@ class Validator {
 	 * @return bool			Nom du champ valide
 	 */
 	public function profile_field_name($name) {
-		$valid = array('first_name', 'last_name', 'email', 'bd_day', 'bd_month', 'bd_year', 'gender', 'id_locale');
+		$valid = array('first_name', 'last_name', 'email', 'bd_day', 'bd_month', 'bd_year', 'gender', 'locale_code');
 		
 		return in_array($name, $valid);
 	}
 	
 	/**
-	 * Valide un ID de paramètre régional.
+	 * Valides a locale code ("fr", "en" and so on).
 	 * 
-	 * @param int $id	ID numérique
-	 * @return bool		ID est valide
+	 * @param int $code	Locale code
+	 * @return bool		Locale is valid
 	 */
-	public function locale_id($id) {
-		$valid = array(1, 2);
+	public function locale_code($code) {
+		/*
+		 * FIXME: this is ugly as fuck because our valid locales our supposed
+		 *        to be on the front-end side
+		 */
+		$valid = array('fr', 'en');
 		
-		return in_array($id, $valid);
+		return in_array($code, $valid);
 	}
 }
 ?>

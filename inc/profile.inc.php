@@ -97,11 +97,11 @@
 							<label><?php T('language'); ?></label>
 						</td>
 						<td class="fi">
-							<select class="select-input" name="id_locale">
+							<select class="select-input" name="locale_code">
 								<?php
 									foreach ($g_config['valid_locales'] as $locale) {
 										$z = ($locale == $g_locale) ? ' selected="selected" ' : '';
-										printf('<option value="%d" %s>%s</option>', $locale, $z, $locale);
+										printf('<option value="%s" %s>%s</option>', $locale, $z, $locale);
 									}
 								?>
 							</select><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?></span>

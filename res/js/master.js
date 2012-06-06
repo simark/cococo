@@ -408,11 +408,12 @@ function create_datatable(obj, sort, col_defs) {
 function ajax_spinner_on() {
 	$.blockUI({
 		css: {
-			backgroundColor: 'transparent',
-			border: 'none'
+			border: 'none',
+			background: 'transparent'
 		},
 		message: '<img src="res/images/ajax-loader.gif" alt="" />',
-		fadeIn: 0
+		fadeIn: 0,
+		showOverlay: false
 	});
 }
 

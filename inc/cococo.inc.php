@@ -31,7 +31,7 @@ if (!$g_be_session->is_user_logged()) { ?>
 	<div class="struct struct-ban-blue-body">
 		<div class="struct-ban-blue-inner-content">
 			<p>
-			<img src="res/images/easysteps.png" alt="inscrivez-vous, ajoutez vos favoris, archivez vos dettes" />
+			<img src="res/images/easysteps_<?php echo $g_cookies_locale; ?>.png" alt="inscrivez-vous, ajoutez vos favoris, archivez vos dettes" />
 			</p>
 		</div>
 	</div>

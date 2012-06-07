@@ -35,7 +35,7 @@
 		$vo->gender = $gender;
 		$vo->username = $username;
 		$vo->passwd = sha1($passwd);
-		$vo->locale = $id_locale;
+		$vo->locale = ($locale_code == 'fr') ? 1 : 2; // Fix that
 		if ($g_be_um->tx_add_user($vo)) {
 			$g_be_um->tx_login($username, $passwd);
 		}

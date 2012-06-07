@@ -2,7 +2,7 @@
 	/* requis */
 	require_once 'config.php';	// configuration du front-end
 	require_once 'be/init.php';	// initialisation du back-end
-	require_once 'lang.php'; // locale
+	require_once 'lang/lang.php'; // locale
 	require_once 'utils.php'; // front-end utilities
 	
 	/* clef de la page */
@@ -18,9 +18,6 @@
 			$g_locale = $cl;
 		}
 	}
-	
-	// locale strings
-	$g_locales_strings = $g_locales_strings_all[$g_locale];
 
 	/* titre de la page */
 	$g_title = _T($g_config['valid_pages'][$g_page_key]);

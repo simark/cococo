@@ -3,8 +3,8 @@
 	 * Front-end utilities.
 	 */
 	 
-	 function err_ls_not_found($key) {
-		 trigger_error(sprintf("Locale string not found for key '%s'.", $key));
+	 function err_ls_not_found($key, $locale) {
+		 trigger_error(sprintf("Locale string not found for key '%s' and language '%s'.", $key, $locale), E_USER_WARNING);
 	 }
 	
 	/**
@@ -13,13 +13,7 @@
 	 * @param string $key	Translation key
 	 */
 	function T($key) {
-		global $g_locales_strings;
-		
-		if (isset($g_locales_strings[$key])) {
-			echo hs($g_locales_strings[$key]); 
-		} else {
-			err_ls_not_found($key);
-		}
+    echo _T($key);
 	}
 	
 	/**
@@ -31,14 +25,7 @@
 	 * @return string	Translated string
 	 */
 	function _T($key) {
-		global $g_locales_strings;
-		
-		if (isset($g_locales_strings[$key])) {
-			return hs($g_locales_strings[$key]);
-		} else {
-			err_ls_not_found($key);
-			return '';
-		}
+    return hs(_T_($key));
 	}
 	
 	/**
@@ -47,13 +34,7 @@
 	 * @param string $key	Translation key
 	 */
 	function T_($key) {
-		global $g_locales_strings;
-		
-		if (isset($g_locales_strings[$key])) {
-			echo $g_locales_strings[$key];
-		} else {
-			err_ls_not_found($key);
-		}
+		echo _T_($key);
 	}
 	
 	/**
@@ -65,13 +46,12 @@
 	 * @return string	Translated string
 	 */
 	function _T_($key) {
-		global $g_locales_strings;
-		
-		if (isset($g_locales_strings[$key])) {
-			return $g_locales_strings[$key];
-		} else {
-			err_ls_not_found($key);
-			return '';
-		}
+		global $g_locales_strings, $g_locale;
+
+    if (isset($g_locales_strings[$key][$g_locale]) && $g_locales_strings[$key][$g_locale]) {
+      return $g_locales_strings[$key][$g_locale];
+    } else {
+      err_ls_not_found($key, $g_locale);
+    }
 	}
 ?>

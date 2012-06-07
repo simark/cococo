@@ -17,13 +17,7 @@ if (!$g_be_session->is_user_logged()) { ?>
 			</div>
 			<h2><?php T('welcome'); ?></h2>
 			<p>
-			<strong>cococo</strong> est un système de gestion de dettes interpersonnelles qui vous aide à
-			vous rappeler qui vous doit combien depuis quand, et vice versa, combien vous devez à qui depuis
-			quand. Commencez dès maintenant en quelques étapes&nbsp;:
-			</p>
-			<p>
-			<strong>cococo</strong> is debt management system that helps you track who owes you some money and vice-versa.
-			Start tracking your debts in only 3 easy steps:&nbsp;:
+			<?php T_('welcome-intro'); ?>
 			</p>
 		</div>
 	</div>

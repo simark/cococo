@@ -4,7 +4,7 @@ html {
 }
 body {
 	margin: 0;
-	background: #fff;
+	background: url(../images/bg.png);
 }
 div.clear {
 	clear: both;
@@ -153,11 +153,11 @@ span.nav-item-selected {
 	color: #DA4804;
 }
 span.nav-item a:link {
-	color: #D7E0E5;
+	color: #DED7CA;
 	text-decoration: none;
 }
 span.nav-item a:visited {
-	color: #D7E0E5;
+	color: #DED7CA;
 	text-decoration: none;
 }
 span.nav-item a:hover {
@@ -165,7 +165,7 @@ span.nav-item a:hover {
 	text-decoration: none;
 }
 span.nav-item a:active {
-	color: #D7E0E5;
+	color: #516C7C;
 	text-decoration: none;
 }
 div#nav-me {

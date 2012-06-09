@@ -275,15 +275,8 @@ class UserManager extends CommonManager {
 		// vérifier le droit de mettre à jour
 		$sess = Session::instance();
 		$u = $sess->get_user();
-		$ok = false;
-		$update_my_user = false;
-		if ($u->has_feature("MODIFY_MY_INFOS") && $vo->id == $u->id) {
-			$ok = true;
-			$update_my_user = true;
-		} else if ($u->has_feature("ADMIN")) {
-			$ok = true;
-		}
-		if (!$ok) {
+		
+		if (!$vo->id != $u->id) {
 			$txr->content = false;
 		} else {
 			$sf_id = parent::escape_string_more($vo->id);
@@ -293,15 +286,15 @@ class UserManager extends CommonManager {
 			$sf_username = parent::escape_string_more($vo->username);
 			$sf_passwd = parent::escape_string_more($vo->passwd);
 			$update_passwd = is_null($vo->passwd) ? 0 : 1;
-			$theme = parent::escape_string_more($vo->theme);
 			$sql = "CALL update_user($sf_id, $sf_first_name, $sf_last_name, $sf_email,
-				$sf_username, $sf_passwd, $update_passwd, $theme)";
+				$sf_username, $sf_passwd, $update_passwd)";
 			$res = $this->query($sql);
-			if ($update_my_user) {
-				$dao = new UserDAO(parent::get_conn());
-				$sess = Session::instance();
-				$sess->set_user($dao->get_by_id($vo->id));
-			}
+			
+			// Update user in session
+			$dao = new UserDAO(parent::get_conn());
+			$sess = Session::instance();
+			$sess->set_user($dao->get_by_id($vo->id));
+		
 			$txr->content = ($res == true);
 		}
 		
@@ -455,57 +448,13 @@ class UserManager extends CommonManager {
 	}
 	
 	/**
-	 * Transaction : obtenir un utilisateur selon le mode.
-	 * 
-	 * @param int $id	ID numérique de l'utilisateur
-	 * @return		Réponse transactionnelle
-	 */
-	public function tx_get_user($id) {
-		// déterminer le type d'utilisateur
-		$txr = new TXResponseVO;
-		$sess = Session::instance();
-		if (!$sess->is_user_logged()) {
-			$txr->err = self::INFO_NOT_LOGGED;
-			
-			return $txr;
-		}
-		$u = $sess->get_user();
-		if (!$u->has_feature("ADMIN") || is_null($id)) {
-			return $this->tx_get_my_user();
-		} else {
-			return $this->tx_admin_get_user($id);
-		}
-	}
-	
-	/**
-	 * Transaction : administration (obtenir un utilisateur donné).
-	 * 
-	 * @param int $id	ID numérique de l'utilisateur
-	 * @return		Réponse transactionnelle
-	 */
-	private function tx_admin_get_user($id) {
-		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADMIN");
-		if ($txr->err !== self::INFO_TX_STARTED) {
-			return $txr;
-		}
-		
-		$dao = new UserDAO(parent::get_conn());
-		$txr->content = $dao->get_by_id($id);
-				
-		$this->stop_tx();
-		
-		return $txr;
-	}
-	
-	/**
 	 * Transaction : obtenir mon utilisateur.
 	 * 
 	 * @return		Réponse transactionnelle
 	 */
 	private function tx_get_my_user() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_MY_INFOS");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -519,14 +468,15 @@ class UserManager extends CommonManager {
 	}
 	
 	/**
-	 * Transaction : rechercher un utilisateur.
+	 * Transaction : rechercher un utilisateur autre que l'utilisateur
+	 * courant.
 	 * 
 	 * @param string $s	Terme de recherche (parmi nom d'utilisateur, nom, prénom, nom complet)
 	 * @return		Contenu : tableau d'utilisateurs partiels, possiblement vide, ou NULL si erreur 
 	 */
 	public function tx_search_user($s) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("SEARCH_USER");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}

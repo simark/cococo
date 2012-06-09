@@ -5,12 +5,6 @@
 	$first_name = $sf_vo->first_name;
 	$last_name = $sf_vo->last_name;
 	$email = $sf_vo->email;
-	$bd_year = $vo->birthday->format("Y");
-	$bd_month = intval($vo->birthday->format("m"));
-	$bd_day = intval($vo->birthday->format("d"));
-	$gender = $vo->gender;
-	$checked_male = ($vo->gender == 'male') ? ' checked="checked" ' : '';
-	$checked_female = ($vo->gender == 'female') ? ' checked="checked" ' : '';
 	$locale_id = intval($vo->locale->id);
 ?>
 <div class="struct struct-body">
@@ -49,47 +43,6 @@
 						</td>
 						<td class="fi">
 							<input type="text" class="text-input" name="email" value="<?php echo $email; ?>" /><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
-						</td>
-					</tr>
-					<tr>
-						<td class="infos">
-							<label>date de naissance</label>
-						</td>
-						<td class="fi">
-							<select class="select-input" name="bd_day">
-								<?php
-									for ($i = 1; $i <= 31; ++$i) {
-										$z = ($i == $bd_day) ? ' selected="selected" ' : '';
-										$add = ($i == 1) ? "er" : "";
-										echo "<option value=\"$i\" $z>$i$add</option>";
-									}
-								?>
-							</select>
-							<select class="select-input" name="bd_month">
-								<?php
-									foreach (get_month_names() as $k => $v) {
-										++$k;
-										$z = ($k == $bd_month) ? ' selected="selected" ' : '';
-										echo "<option value=\"$k\" $z>$v</option>";
-									}
-								?>
-							</select>
-							<select class="select-input" name="bd_year">
-								<?php
-									for ($i = 1900; $i <= 2010; ++$i) {
-										$z = ($i == $bd_year) ? ' selected="selected" ' : '';
-										echo "<option value=\"$i\" $z>$i</option>";
-									}
-								?>
-							</select><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
-						</td>
-					</tr>
-					<tr>
-						<td class="infos">
-							<label>sexe</label>
-						</td>
-						<td class="fi">
-							<input type="radio" name="gender" value="male" <?php echo $checked_male; ?> /><span class="check_behind">homme</span>&nbsp;<input type="radio" name="gender" value="female" <?php echo $checked_female; ?> /><span class="check_behind">femme</span><span class="info info-modified"><?php T('value-modified'); ?></span><span class="info info-invalid"><?php T('value-invalid'); ?>.</span>
 						</td>
 					</tr>
 					<tr>

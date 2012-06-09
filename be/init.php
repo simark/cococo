@@ -6,13 +6,9 @@
 	// fichiers requis
 	require_once(__DIR__ . "/dao/common.php");
 	require_once(__DIR__ . "/dao/user.php");
-	require_once(__DIR__ . "/dao/feature.php");
-	require_once(__DIR__ . "/dao/group.php");
 	require_once(__DIR__ . "/dao/locale.php");
 	require_once(__DIR__ . "/vo/common.php");
 	require_once(__DIR__ . "/vo/user.php");
-	require_once(__DIR__ . "/vo/feature.php");
-	require_once(__DIR__ . "/vo/group.php");
 	require_once(__DIR__ . "/vo/debttotals.php");
 	require_once(__DIR__ . "/vo/debtsummary.php");
 	require_once(__DIR__ . "/vo/debt.php");

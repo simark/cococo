@@ -40,26 +40,21 @@ class CommonManager {
 	
 	/**
 	 * Débute une transaction du gestionnaire.
-	 * 
-	 * @param string $feature_name		Nom de la fonctionnalité pour cette transaction
+	 *
 	 * @return string			Chaine d'erreur/succès
 	 */
-	protected function start_tx($feature_name) {		
+	protected function start_tx() {		
 		$sess = Session::instance();
 		if (!$sess->is_user_logged()) {
 			return self::INFO_NOT_LOGGED;
 		}
 		$u = $sess->get_user();
-		
-		if ($u->has_feature($feature_name) || $feature_name === NULL) {
-			if (!$this->start_db()) {
-				return self::INFO_DB_ERROR;
-			}
-			
-			return self::INFO_TX_STARTED;
-		} else {
-			return self::INFO_NO_RIGHT;
+
+		if (!$this->start_db()) {
+			return self::INFO_DB_ERROR;
 		}
+		
+		return self::INFO_TX_STARTED;
 	}
 	
 	/**
@@ -155,14 +150,13 @@ class CommonManager {
 	/**
 	 * Transaction générique : obtenir tous les VO à partir d'un DAO.
 	 * 
-	 * @param string $feature_name		Nom de la fonctionnalité pour cette transaction
 	 * @param string $dao_class		Nom de la classe du DAO à utiliser
 	 * @param string $dao_method		Nom de la méthode particulière du DAO
 	 * @return				Réponse de transaction avec comme contenu les VO ou NULL
 	 */
-	protected function tx_get_all($feature_name, $dao_class, $dao_method = NULL) {
+	protected function tx_get_all($dao_class, $dao_method = NULL) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx($feature_name);
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			// erreur initiale de transaction
 			return $txr;
@@ -187,14 +181,13 @@ class CommonManager {
 	/**
 	 * Transaction générique : obtenir un VO par ID numérique à partir d'un DAO.
 	 *
-	 * @param string $feature_name		Nom de la fonctionnalité pour cette transaction
 	 * @param string $dao_class		Nom de la classe du DAO à utiliser
 	 * @param int $id			ID numérique
 	 * @return				Réponse de transaction avec comme contenu le VO ou NULL
 	 */
-	protected function tx_get_by_id($feature_name, $dao_class, $id) {
+	protected function tx_get_by_id($dao_class, $id) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx($feature_name);
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			// erreur initiale de transaction
 			return $txr;

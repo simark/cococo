@@ -106,12 +106,10 @@ class UserManager extends CommonManager {
 		$sf_first_name = parent::escape_string_more($vo->first_name);
 		$sf_last_name = parent::escape_string_more($vo->last_name);
 		$sf_email = parent::escape_string_more($vo->email);
-		$sf_birthday = parent::escape_string_more($vo->birthday);
-		$sf_gender = parent::escape_string_more($vo->gender);
 		$sf_username = parent::escape_string_more($vo->username);
 		$sf_passwd = parent::escape_string_more($vo->passwd);
 		$sf_id_locale = parent::escape_string_more($vo->locale);
-		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email, $sf_birthday, $sf_gender, $sf_id_locale, $sf_username, $sf_passwd)";
+		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email, $sf_id_locale, $sf_username, $sf_passwd)";
 		$res = $this->query($sql);
 		$ret = ($res == true);
 		
@@ -292,13 +290,11 @@ class UserManager extends CommonManager {
 			$sf_first_name = parent::escape_string_more($vo->first_name);
 			$sf_last_name = parent::escape_string_more($vo->last_name);
 			$sf_email = parent::escape_string_more($vo->email);
-			$sf_birthday = parent::escape_string_more($vo->birthday);
-			$sf_gender = parent::escape_string_more($vo->gender);
 			$sf_username = parent::escape_string_more($vo->username);
 			$sf_passwd = parent::escape_string_more($vo->passwd);
 			$update_passwd = is_null($vo->passwd) ? 0 : 1;
 			$theme = parent::escape_string_more($vo->theme);
-			$sql = "CALL update_user($sf_id, $sf_first_name, $sf_last_name, $sf_email, $sf_birthday, $sf_gender,
+			$sql = "CALL update_user($sf_id, $sf_first_name, $sf_last_name, $sf_email,
 				$sf_username, $sf_passwd, $update_passwd, $theme)";
 			$res = $this->query($sql);
 			if ($update_my_user) {

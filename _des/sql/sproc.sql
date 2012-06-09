@@ -1,38 +1,5 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS assign_user_to_group $$
-CREATE PROCEDURE assign_user_to_group(
-	IN p_id_user INT,
-	IN p_id_group INT
-)
-BEGIN
-	INSERT INTO
-		user_groups
-	(
-		id_user,
-		id_group
-	)
-	VALUES(
-		p_id_user,
-		p_id_group
-	);
-END;
-$$
-
-DROP PROCEDURE IF EXISTS unassign_user_from_group $$
-CREATE PROCEDURE unassign_user_from_group(
-	IN p_id_user INT,
-	IN p_id_group INT
-)
-BEGIN
-	DELETE FROM
-		user_groups
-	WHERE
-		id_user = p_id_user AND
-		id_group = p_id_group;
-END;
-$$
-
 DROP PROCEDURE IF EXISTS add_debt $$
 CREATE PROCEDURE add_debt(
 	IN p_id_user INT,
@@ -176,20 +143,6 @@ BEGIN
 END;
 $$
 
-DROP PROCEDURE IF EXISTS update_user_admin $$
-CREATE PROCEDURE update_user_admin(
-	IN p_id_user INT,
-	IN p_state BOOLEAN
-)
-BEGIN
-	IF (p_state = TRUE) THEN
-		CALL assign_user_to_group(p_id_user, 3);
-	ELSE
-		CALL unassign_user_from_group(p_id_user, 3);
-	END IF;
-END;
-$$
-
 DROP PROCEDURE IF EXISTS delete_user $$
 CREATE PROCEDURE delete_user(
 	IN p_id_user INT
@@ -200,10 +153,6 @@ BEGIN
 	WHERE
 		id_user_src = p_id_user OR
 		id_user_dst = p_id_user;
-	DELETE FROM
-		user_groups
-	WHERE
-		id_user = p_id_user;
 	DELETE FROM
 		users
 	WHERE
@@ -244,22 +193,6 @@ BEGIN
 		TRUE,
 		NOW()
 	);
-	SELECT
-		LAST_INSERT_ID()
-	INTO
-		id;
-	IF (id > 0) THEN
-		INSERT INTO
-			user_groups
-		(
-			id_user,
-			id_group
-		)
-		VALUES(
-			id,
-			2
-		);
-	END IF;
 END;
 $$
 

@@ -16,27 +16,15 @@ class UserDAO extends CommonDAO {
 			"last_name",
 			"first_name",
 			"email",
-			"birthday",
-			"gender",
 			"username",
 			"passwd",
 			"is_active",
 			"date_creation",
-			"theme",
 			"avatar"
 		);
 		$this->_table = "users";
 		$this->_vo_class = "UserVO";
 		parent::__construct($conn);
-	}
-	
-	/**
-	 * Attribue ses groupes à l'utilisateur.
-	 * 
-	 * @param UserVO $vo	Utilisateur
-	 */
-	private function set_groups($vo) {
-		$vo->groups = parent::get_many("user_groups", "id_user", $vo->id, "id_group", "GroupDAO");
 	}
 	
 	/**
@@ -58,21 +46,6 @@ class UserDAO extends CommonDAO {
 	}
 	
 	/**
-	 * Attribue ses fonctionnalités à un utilisateur (selon ses groupes).
-	 * 
-	 * @param UserVO $vo	Utilisateur
-	 */
-	private function set_feature_names($vo) {
-		$vo->feature_names = array();
-		foreach ($vo->groups as $group) {
-			foreach ($group->features as $feature) {
-				array_push($vo->feature_names, $feature->name);
-			}
-		}
-		$vo->feature_names = array_unique($vo->feature_names);
-	}
-	
-	/**
 	 * Obtenir un utilisateur par ID numérique.
 	 * 
 	 * @see CommonDAO::get_by_id()
@@ -83,15 +56,14 @@ class UserDAO extends CommonDAO {
 		if (is_null($vo)) {
 			return NULL;
 		}
-		$this->set_groups($vo);
-		$this->set_feature_names($vo);
+
 		$this->set_locale($vo);
 		
 		return $vo;
 	}
 	
 	/**
-	 * Obtenir un utilisateur partiel (sans groupes complets/fonctionnalités).
+	 * Obtenir un utilisateur partiel
 	 * 
 	 * @return UserVO	Utilisateur ou NULL
 	 */
@@ -100,23 +72,6 @@ class UserDAO extends CommonDAO {
 		if (is_null($vo)) {
 			return NULL;
 		}
-		$id = $vo->id;
-		$sql = "SELECT
-				id_group
-			FROM
-				user_groups
-			WHERE
-				id_user = $id";
-		$rows = $this->get_all_rows($sql);
-		$vo->groups = array();
-		if (!is_null($rows)) {
-			foreach ($rows as $v) {
-				array_push($vo->groups, $v['id_group']);				
-			}
-		}
-		$vo->feature_names = NULL;
-		dtfmdt($vo->birthday);
-		dtfmdt($vo->date_creation);
 		
 		return $vo;
 	}		

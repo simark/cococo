@@ -54,7 +54,7 @@ class DebtManager extends CommonManager {
 				(id_user_src = '$id_user' OR
 				id_user_dst = '$id_user') AND
 				is_confirmed = TRUE";
-				die($sql);
+
 		$res = $this->query($sql);
 		if ($res === false) {
 			return NULL;

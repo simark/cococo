@@ -43,13 +43,6 @@
 		<small>laisser vide pour ne pas modifier</small>
 	</p>
 	<p>
-		<label><strong>thème</strong></label>
-		<select class="select-input" name="theme">
-			<option value="leaves" <?php echo $s_leaves; ?>>nature</option>
-			<option value="urban" <?php echo $s_urban; ?>>urbain</option>
-		</select>
-	</p>
-	<p>
 		<label><strong>soumission/réinitialisation</strong></label><br />
 		<input class="submit-input" type="submit" value="modifier" />&nbsp;<input class="submit-input" type="reset" value="réinitialisation" />
 	</p>

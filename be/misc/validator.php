@@ -211,20 +211,6 @@ class Validator {
 	}
 	
 	/**
-	 * Valide un nom de thème parmi ceux disponibles.
-	 * 
-	 * @param string $theme		Thème
-	 * @return bool			Thème valide
-	 */
-	public function theme($theme) {
-		// NULL
-		if (is_null($theme)) {
-			return false;
-		}
-		
-		return in_array($theme, array('leaves', 'urban'));
-	}
-	/**
 	 * Valide un nom de champ de modification de profil.
 	 * 
 	 * @param string $name		Nom du champ

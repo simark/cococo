@@ -12,7 +12,7 @@
 	$amount = intval($amount * 100);
 	msn($descr);
 	msn($date_real);
-	$is_payback = ($is_payback == 1);
+	$is_payback = (isset($is_payback) && $is_payback == 1);
 	
 	// valider les entrées
 	$valid = mega_and(array(

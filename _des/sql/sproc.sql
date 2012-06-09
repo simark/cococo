@@ -216,11 +216,9 @@ CREATE PROCEDURE add_user(
 	IN p_first_name TEXT,
 	IN p_last_name TEXT,
 	IN p_email TEXT,
-	IN p_birthday DATE,
-	IN p_gender VARCHAR(16),
 	IN p_id_locale INT,
 	IN p_username VARCHAR(30),
-	IN p_sha1_passwd VARCHAR(40)
+	IN p_sha1_passwd VARCHAR(48)
 )
 BEGIN
 	DECLARE id INT;
@@ -230,27 +228,21 @@ BEGIN
 		first_name,
 		last_name,
 		email,
-		birthday,
-		gender,
 		id_locale,
 		username,
 		passwd,
 		is_active,
-		date_creation,
-		theme
+		date_creation
 	)
 	VALUES(
 		p_first_name,
 		p_last_name,
 		p_email,
-		p_birthday,
-		p_gender,
 		p_id_locale,
 		p_username,
 		p_sha1_passwd,
 		TRUE,
-		NOW(),
-		'leaves'
+		NOW()
 	);
 	SELECT
 		LAST_INSERT_ID()
@@ -277,12 +269,9 @@ CREATE PROCEDURE update_user(
 	IN p_first_name TEXT,
 	IN p_last_name TEXT,
 	IN p_email TEXT,
-	IN p_birthday DATE,
-	IN p_gender VARCHAR(16),
 	IN p_username VARCHAR(30),
-	IN p_sha1_passwd VARCHAR(40),
-	IN p_update_passwd BOOLEAN,
-	IN p_theme VARCHAR(32)
+	IN p_sha1_passwd VARCHAR(48),
+	IN p_update_passwd BOOLEAN
 )
 BEGIN
 	UPDATE
@@ -291,15 +280,12 @@ BEGIN
 		first_name = p_first_name,
 		last_name = p_last_name,
 		email = p_email,
-		birthday = p_birthday,
-		gender = p_gender,
 		username = p_username,
 		passwd = IF(
 			p_update_passwd,
 			p_sha1_passwd,
 			passwd
-		),
-		theme = p_theme
+		)
 	WHERE
 		id = p_id_user;
 END;

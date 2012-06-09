@@ -126,7 +126,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_add_user_to_my_favs($un) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADD_TO_MY_FAVS");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -158,7 +158,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_remove_user_from_my_favs($id) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("REMOVE_FROM_MY_FAVS");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -220,7 +220,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_modify_profile_field($field_name, $field_value) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("MODIFY_PROFILE");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -267,7 +267,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_update_user($vo) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx(NULL);
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -310,7 +310,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_get_users() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_USERS");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -330,7 +330,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_get_my_favs() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_FAVS");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -383,7 +383,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_admin_update_is_active($id, $state) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADMIN");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -408,7 +408,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_admin_update_is_admin($id, $state) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADMIN");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -432,7 +432,7 @@ class UserManager extends CommonManager {
 	 */
 	public function tx_admin_delete_user($id) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADMIN");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}

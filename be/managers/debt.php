@@ -54,6 +54,7 @@ class DebtManager extends CommonManager {
 				(id_user_src = '$id_user' OR
 				id_user_dst = '$id_user') AND
 				is_confirmed = TRUE";
+				die($sql);
 		$res = $this->query($sql);
 		if ($res === false) {
 			return NULL;
@@ -122,7 +123,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_get_my_totals() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_MY_SUMMARY");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -143,7 +144,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_get_my_summary() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_MY_SUMMARY");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -241,7 +242,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_get_my_history() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_MY_HISTORY");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -262,7 +263,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_get_my_to_be_confirmed() {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_MY_HISTORY");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -323,7 +324,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_add_debt($other_user, $descr, $amount, $is_payback, $creator, $direction, $date_real) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("ADD_DEBT");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -358,7 +359,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_confirm_debt($id_debt) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("CONFIRM_DEBT");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -389,7 +390,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_invalidate_debt($id_debt) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("CONFIRM_DEBT");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}
@@ -420,7 +421,7 @@ class DebtManager extends CommonManager {
 	 */
 	public function tx_get_zuser($id) {
 		$txr = new TXResponseVO;
-		$txr->err = $this->start_tx("GET_ZUSER");
+		$txr->err = $this->start_tx();
 		if ($txr->err !== self::INFO_TX_STARTED) {
 			return $txr;
 		}

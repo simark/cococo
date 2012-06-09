@@ -1,5 +1,5 @@
 Options -Indexes
-php_value error_reporting 8191
+php_value error_reporting 32767
 php_flag display_errors on
 
 # rewrite rules

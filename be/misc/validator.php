@@ -127,7 +127,7 @@ class Validator {
 	 */
 	public function debt_description($descr) {
 		// longueur
-		if (!$this->strlen_between($username, 0, 140)) {
+		if (!$this->strlen_between($descr, 0, 140)) {
 			return false;
 		}
 		

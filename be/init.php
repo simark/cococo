@@ -15,6 +15,7 @@
 	require_once(__DIR__ . "/vo/locale.php");
 	require_once(__DIR__ . "/vo/txresponse.php");
 	require_once(__DIR__ . "/misc/config.php");
+	require_once(__DIR__ . "/misc/passwd.php");
 	require_once(__DIR__ . "/misc/session.php");
 	require_once(__DIR__ . "/misc/utils.php");
 	require_once(__DIR__ . "/misc/validator.php");

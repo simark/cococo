@@ -17,7 +17,7 @@
 	
 	// agir si valides
 	if ($valid) {
-		$txr = $g_be_um->tx_modify_profile_field('passwd', sha1($password));
+		$txr = $g_be_um->tx_modify_profile_field('passwd', crypt_password($password));
 		if ($txr->content === true) {
 			redir("../?p=profile");
 			exit(0);

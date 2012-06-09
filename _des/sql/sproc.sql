@@ -167,7 +167,7 @@ CREATE PROCEDURE add_user(
 	IN p_email TEXT,
 	IN p_id_locale INT,
 	IN p_username VARCHAR(30),
-	IN p_sha1_passwd VARCHAR(48)
+	IN p_sha1_passwd VARCHAR(100)
 )
 BEGIN
 	DECLARE id INT;
@@ -203,7 +203,7 @@ CREATE PROCEDURE update_user(
 	IN p_last_name TEXT,
 	IN p_email TEXT,
 	IN p_username VARCHAR(30),
-	IN p_sha1_passwd VARCHAR(48),
+	IN p_sha1_passwd VARCHAR(100),
 	IN p_update_passwd BOOLEAN
 )
 BEGIN

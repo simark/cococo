@@ -66,7 +66,7 @@ class UserManager extends CommonManager {
 		if (is_null($u)) {
 			return self::INFO_WRONG_USERNAME;
 		} else {
-			if (strtolower($u->passwd) == strtolower(sha1($passwd))) {
+			if (check_password($passwd, $u->passwd)) {
 				if ($u->is_active) {
 					$sess = Session::instance();
 					$sess->set_user($u);
@@ -109,7 +109,8 @@ class UserManager extends CommonManager {
 		$sf_username = parent::escape_string_more($vo->username);
 		$sf_passwd = parent::escape_string_more($vo->passwd);
 		$sf_id_locale = parent::escape_string_more($vo->locale);
-		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email, $sf_id_locale, $sf_username, $sf_passwd)";
+		$sql = "CALL add_user($sf_first_name, $sf_last_name, $sf_email,
+			$sf_id_locale, $sf_username, $sf_passwd)";
 		$res = $this->query($sql);
 		$ret = ($res == true);
 		

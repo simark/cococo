@@ -25,7 +25,7 @@
 		$vo->last_name = $last_name;
 		$vo->email = $email;
 		$vo->username = $username;
-		$vo->passwd = sha1($passwd);
+		$vo->passwd = crypt_password($passwd);
 		$vo->locale = ($locale_code == 'fr') ? 1 : 2; // Fix that
 		if ($g_be_um->tx_add_user($vo)) {
 			$g_be_um->tx_login($username, $passwd);

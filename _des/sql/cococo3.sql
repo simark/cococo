@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.23, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.22, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: cococo
 -- ------------------------------------------------------
--- Server version	5.5.23-2-log
+-- Server version	5.5.22-0ubuntu1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -123,7 +123,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   KEY `fk_users_locales` (`id_locale`),
   CONSTRAINT `fk_users_locales` FOREIGN KEY (`id_locale`) REFERENCES `locales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,6 +132,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (31,'Cococo','Monsieur','cococo@example.com','cococofr','$2a$04$.OvZUtNGM32yp56PWmMo8ujLyU2nfkvVoKuN.XftvbfL4yqzfJ/ze',1,1,'def0','2012-06-11 09:48:18'),(32,'Cococo','Mister','cococo@example.com','cococoen','$2a$04$AAoaXRUwAdbJiZwMpfcHUuMl6xRiYjUZsezOTcRHMQdN0Vl7s3b1u',2,1,'def0','2012-06-11 09:48:38');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,4 +304,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-06-09 15:02:37
+-- Dump completed on 2012-06-11  9:49:48

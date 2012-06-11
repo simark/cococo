@@ -14,7 +14,6 @@
 		!is_null($passwd),
 		!is_null($passwd_conf),
 		$passwd === $passwd_conf,
-		$accept == 1
 	));
 	
 	// agir si valides

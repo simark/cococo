@@ -170,12 +170,6 @@ function validate_signup(form) {
 		ret = false;
 	}
 	
-	// validation : terme accepté
-	if (!form.accept.checked) {
-		show_invalid_tip(form.accept);
-		ret = false;
-	}
-	
 	return ret;
 }
 

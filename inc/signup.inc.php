@@ -118,14 +118,6 @@
 					</tr>
 					<tr>
 						<td class="infos">
-							<label>termes et conditions</label>
-						</td>
-						<td class="fi">
-							<input type="checkbox" value="1" name="accept" /><span class="check_behind">j'accepte les termes et conditions de l'inscription</span><span class="info info-invalid">vous devez accepter les termes!</span>
-						</td>
-					</tr>
-					<tr>
-						<td class="infos">
 							<label></label>
 						</td>
 						<td>

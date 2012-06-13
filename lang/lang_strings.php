@@ -271,6 +271,21 @@ Start tracking your debts in only 3 easy steps:',
     'en' => 'which way ?',
     'fr' => 'quel sens ?',
   ),
+  'test1' => 
+  array (
+    'en' => 'This is a test {value1} heyho',
+    'fr' => 'This is a test {value1} heyho',
+  ),
+  'test2' => 
+  array (
+    'en' => 'This is another test {value2| date}',
+    'fr' => 'This is another test {value2| date}',
+  ),
+  'test3' => 
+  array (
+    'en' => '{value3 | money}',
+    'fr' => '{value3 | money}',
+  ),
 );
 
 ?>

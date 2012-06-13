@@ -1,5 +1,6 @@
 <?php
 	require_once 'lang_strings.php';
+  require_once 'lang_filters.php';
 	
 	/**
 	 * Front-end utilities.
@@ -88,15 +89,22 @@
         continue;
       }
 
-      $replacement_str = $values[$key];
+      $remplacement_val = $values[$key];
 
       if ($filter) {
-        // TODO Replace by actual filter call
-        $replacement_str = $replacement_str . $replacement_str;
+        global $g_locale;
+        
+        $filter_func = "lang_{$g_locale}_filter_{$filter}";
+
+        if (function_exists($filter_func)) {
+          $remplacement_val = $filter_func($remplacement_val);
+        } else {
+          trigger_error("Can't find filter function $filter_func", E_USER_WARNING);
+        }
       }
       
-      $replacement_len = strlen($replacement_str);
-      $string = substr_replace($string, $replacement_str, $matched_str_offset, $matched_str_len);
+      $replacement_len = strlen($remplacement_val);
+      $string = substr_replace($string, $remplacement_val, $matched_str_offset, $matched_str_len);
 
       /* Start of the new search */
       $search_offset = $matched_str_offset + $replacement_len;

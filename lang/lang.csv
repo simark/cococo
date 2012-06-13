@@ -53,3 +53,6 @@ welcome,welcome on cococo !,bienvenue sur cococo !
 welcome-intro,"<strong>cococo</strong> is a debt management system that helps you track who owes you some money and vice-versa.
 Start tracking your debts in only 3 easy steps:","<strong>cococo</strong> est un système de gestion de dettes interpersonnelles qui vous aide à vous rappeler qui vous doit combien depuis quand, et vice versa, combien vous devez à qui depuis quand. Commencez dès maintenant en quelques étapes :"
 which-way,which way ?,quel sens ?
+test1,This is a test {value1} heyho,This is a test {value1} heyho
+test2,This is another test {value2| date},This is another test {value2| date}
+test3,{value3 | money},{value3 | money}

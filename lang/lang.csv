@@ -5,6 +5,7 @@ add-debt-desc,"This form allows you to add a debt. After you submitted the debt,
 add-user,add a friend,ajouter un ami
 add-user-to-friends,add a user to my friends,ajouter un utilisateur à mes amis
 adddebt,add debt,ajouter une dette
+alphanum-only,alphanumeric caracters only,caractères alphanumériques seulement
 amount,amount,montant
 avatar,avatar,avatar
 cococo,cococo,cococo
@@ -14,6 +15,14 @@ date-format-desc,date format: YYYY-MM-DD,format de date: YYYY-MM-DD
 debt-date,date of the debt,date de la dette
 description,description,description
 email,email,courriel
+error-inactive-user,"your user account is inactive, please contact an administrator.","votre utilisateur n'est pas actif, veuillez consulter un administrateur."
+error-invalid-add-debt,there are invalids fields in your debt add form.,il y a des champs invalides dans votre formulaire d'ajout de dette.
+error-invalid-avatar,your avatar is incompatible or to large.,votre avatar est incompatible ou trop grand.
+error-invalid-login,wrong username or password.,mauvais utilisateur ou mot de passe.
+error-invalid-modify-user,there are invalids fields in your user profile modification form.,il y a des champs invalides dans votre formulaire de modification de profil.
+error-invalid-password,your new password is not valid.,votre nouveau mot de passe est invalide.
+error-invalid-signup,there are invalids fields in your signup form.,il y a des champs invalides dans votre formulaire d'inscription.
+error-session-expired,your session has expired after {exp} seconds of inactivity.,votre session a expiré après {exp} secondes d'inactivité.
 favs,my friends,mes amis
 first-name,first name,prénom
 go_login,login,connexion
@@ -37,12 +46,16 @@ new-password-confirm,new password (confirm),nouveau mot de passe (encore)
 optional,optional,optionnel
 other-person,other person,autre personne
 password,password,mot de passe
+password-again,password (again),mot de passe (encore)
 profile,my profile,mon profil
 refund,refund,remboursement
+reset,reset,réinitialiser
 search,search,rechercher
 search-user,search user,rechercher un utilisateur
 send,send,envoyer
 signup,signup,inscription
+signup-desc,You need to complete all the following fields in order to complete your signup on <strong>cococo</strong>.,Remplissez <em>tous</em> les champs suivants afin de compléter votre inscription à <strong>cococo</strong>.
+submit,submit,soumettre
 summary,summary,sommaire
 they-owe-me,they owe me,on me doit
 totals,totals,totaux
@@ -53,6 +66,4 @@ welcome,welcome on cococo !,bienvenue sur cococo !
 welcome-intro,"<strong>cococo</strong> is a debt management system that helps you track who owes you some money and vice-versa.
 Start tracking your debts in only 3 easy steps:","<strong>cococo</strong> est un système de gestion de dettes interpersonnelles qui vous aide à vous rappeler qui vous doit combien depuis quand, et vice versa, combien vous devez à qui depuis quand. Commencez dès maintenant en quelques étapes :"
 which-way,which way ?,quel sens ?
-test1,This is a test {value1} heyho,This is a test {value1} heyho
-test2,This is another test {value2| date},This is another test {value2| date}
-test3,{value3 | money},{value3 | money}
+page-not-found,page not found,page introuvable

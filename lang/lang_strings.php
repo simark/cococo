@@ -35,6 +35,11 @@ $g_locales_strings = array (
     'en' => 'add debt',
     'fr' => 'ajouter une dette',
   ),
+  'alphanum-only' => 
+  array (
+    'en' => 'alphanumeric caracters only',
+    'fr' => 'caractères alphanumériques seulement',
+  ),
   'amount' => 
   array (
     'en' => 'amount',
@@ -79,6 +84,46 @@ $g_locales_strings = array (
   array (
     'en' => 'email',
     'fr' => 'courriel',
+  ),
+  'error-inactive-user' => 
+  array (
+    'en' => 'your user account is inactive, please contact an administrator.',
+    'fr' => 'votre utilisateur n\'est pas actif, veuillez consulter un administrateur.',
+  ),
+  'error-invalid-add-debt' => 
+  array (
+    'en' => 'there are invalids fields in your debt add form.',
+    'fr' => 'il y a des champs invalides dans votre formulaire d\'ajout de dette.',
+  ),
+  'error-invalid-avatar' => 
+  array (
+    'en' => 'your avatar is incompatible or to large.',
+    'fr' => 'votre avatar est incompatible ou trop grand.',
+  ),
+  'error-invalid-login' => 
+  array (
+    'en' => 'wrong username or password.',
+    'fr' => 'mauvais utilisateur ou mot de passe.',
+  ),
+  'error-invalid-modify-user' => 
+  array (
+    'en' => 'there are invalids fields in your user profile modification form.',
+    'fr' => 'il y a des champs invalides dans votre formulaire de modification de profil.',
+  ),
+  'error-invalid-password' => 
+  array (
+    'en' => 'your new password is not valid.',
+    'fr' => 'votre nouveau mot de passe est invalide.',
+  ),
+  'error-invalid-signup' => 
+  array (
+    'en' => 'there are invalids fields in your signup form.',
+    'fr' => 'il y a des champs invalides dans votre formulaire d\'inscription.',
+  ),
+  'error-session-expired' => 
+  array (
+    'en' => 'your session has expired after {exp} seconds of inactivity.',
+    'fr' => 'votre session a expiré après {exp} secondes d\'inactivité.',
   ),
   'favs' => 
   array (
@@ -195,6 +240,11 @@ $g_locales_strings = array (
     'en' => 'password',
     'fr' => 'mot de passe',
   ),
+  'password-again' => 
+  array (
+    'en' => 'password (again)',
+    'fr' => 'mot de passe (encore)',
+  ),
   'profile' => 
   array (
     'en' => 'my profile',
@@ -204,6 +254,11 @@ $g_locales_strings = array (
   array (
     'en' => 'refund',
     'fr' => 'remboursement',
+  ),
+  'reset' => 
+  array (
+    'en' => 'reset',
+    'fr' => 'réinitialiser',
   ),
   'search' => 
   array (
@@ -224,6 +279,16 @@ $g_locales_strings = array (
   array (
     'en' => 'signup',
     'fr' => 'inscription',
+  ),
+  'signup-desc' => 
+  array (
+    'en' => 'You need to complete all the following fields in order to complete your signup on <strong>cococo</strong>.',
+    'fr' => 'Remplissez <em>tous</em> les champs suivants afin de compléter votre inscription à <strong>cococo</strong>.',
+  ),
+  'submit' => 
+  array (
+    'en' => 'submit',
+    'fr' => 'soumettre',
   ),
   'summary' => 
   array (
@@ -271,20 +336,10 @@ Start tracking your debts in only 3 easy steps:',
     'en' => 'which way ?',
     'fr' => 'quel sens ?',
   ),
-  'test1' => 
+  'page-not-found' => 
   array (
-    'en' => 'This is a test {value1} heyho',
-    'fr' => 'This is a test {value1} heyho',
-  ),
-  'test2' => 
-  array (
-    'en' => 'This is another test {value2| date}',
-    'fr' => 'This is another test {value2| date}',
-  ),
-  'test3' => 
-  array (
-    'en' => '{value3 | money}',
-    'fr' => '{value3 | money}',
+    'en' => 'page not found',
+    'fr' => 'page introuvable',
   ),
 );
 

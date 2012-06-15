@@ -126,35 +126,35 @@
 						case 'timeout':
 						$c = Config::instance();
 						$exp = $c->get("sess_exp");
-						$msg = "votre session a expiré après $exp secondes d'inactivité...";
+						$msg = _T('error-session-expired', array('exp' => $exp));
 						break;
 						
 						case 'invalid_signup':
-						$msg = "il y a des champs invalides dans votre formulaire d'inscription...";
+						$msg = _T('error-invalid-signup');
 						break;
 						
 						case 'invalid_modify_user':
-						$msg = "il y a des champs invalides dans votre formulaire de modification...";
+						$msg = _T('error-invalid-modify-user');
 						break;
 						
 						case 'invalid_login':
-						$msg = "mauvais nom d'utilisateur ou mot de passe...";
+						$msg = _T('error-invalid-login');
 						break;
 						
 						case 'invalid_add_debt':
-						$msg = "il y a des champs invalides dans votre formulaire d'ajout de dette...";
+						$msg = _T('error-invalid-add-debt');
 						break;
 						
 						case 'inactive_user':
-						$msg = "votre utilisateur n'est pas actif; veuillez consulter un administrateur...";
+						$msg = _T('error-inactive-user');
 						break;
 						
 						case 'invalid_avatar':
-						$msg = "avatar incompatible ou trop grand...";
+						$msg = _T('error-invalid-avatar');
 						break;
 						
 						case 'invalid_password':
-						$msg = "nouveau mot de passe non valide...";
+						$msg = _T('error-invalid-password');
 						break;
 					}
 				}
@@ -174,7 +174,7 @@
 				if (file_exists($g_inc)) {
 					include_once($g_inc);
 				} else { ?>
-					<p>Page introuvable...</p>
+					<p><?php T('page-not-found'); ?></p>
 				<?php }
 			?>
 			
@@ -182,22 +182,6 @@
 			<div class="struct struct-body struct-body-spacer"></div>
 			<div class="struct struct-bottom"></div>
 		</div>
-	</div>
-	<div id="ajax-load">
-		hello you donkey lol
-	</div>
-	<div style="display: none;">
-		<div id="search-user-window">
-			<h2>recherche d'utilisateur</h2>
-			<p>
-				<input class="text-input" type="text" />
-			</p>
-			<div class="results">
-				<p class="empty">aucun résultat!</p>
-			</div>
-		</div>
-	</div>
-	<div id="zuser-window">
 	</div>
 </body>
 </html>
